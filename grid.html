@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=1.8" />
+  <title>MSNA 2026 · Lebanon survey progress (switch view)</title>
+
+  <style>
+    /* ---- Reset & Base ---- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f3f4f4;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #58585A;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .navbar {
+      background: #58585A;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+    .navbar-left { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .navbar-title { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.3px; font-weight: 700; }
+    .navbar-updated { font-size: 0.65rem; opacity: 0.7; font-weight: 400; }
+    .navbar-right { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .nav-link {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding: 0.2rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      background: transparent !important;
+      border-left: none !important;
+    }
+    .nav-link:hover { color: white; border-bottom-color: rgba(255,255,255,0.3); }
+    .nav-link.active { color: white; border-bottom-color: #EE5859; }
+
+    /* ---- Main content ---- */
+    .main-content {
+      flex: 1;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 1.8rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+      gap: 0.8rem;
+    }
+    .table-header h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: #58585A;
+    }
+    .btn-download {
+      background: #58585A;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      transition: background 0.2s;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-left: 0.8rem;
+    }
+    .btn-download:hover { background: #EE5859; }
+    .btn-download:active { background: #d04a4b; }
+
+    /* toggle switch buttons */
+    .view-switch {
+      display: flex;
+      gap: 0rem;
+      background: #e9edf2;
+      padding: 0ch;
+      border-radius: 0;
+    }
+    .switch-btn {
+      background: transparent;
+      border: none;
+      padding: 0.45rem 1.3rem;
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #58585A;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 0;
+    }
+    .switch-btn.active {
+      background: #EE5859;
+      color: #fff;
+    }
+    .switch-btn:hover:not(.active) {
+      background: #e5e8eb;
+    }
+
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #d0d7e2;
+      border-radius: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      min-width: 900px;
+    }
+    th {
+      background: #f8fafd;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #58585A;
+      font-weight: 700;
+      padding: 0.8rem 0.6rem;
+      text-align: right;
+      border-bottom: 2px solid #EE5859;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+    th:hover { background: #f0f4f8; }
+    th.sortable::after {
+      content: '↕';
+      margin-left: 0.3rem;
+      opacity: 0.5;
+      font-size: 0.6rem;
+    }
+    th.sortable.asc::after {
+      content: '↑';
+      opacity: 1;
+      color: #EE5859;
+    }
+    th.sortable.desc::after {
+      content: '↓';
+      opacity: 1;
+      color: #EE5859;
+    }
+    th:first-child, td:first-child {
+      text-align: left;
+      position: sticky;
+      left: 0;
+      background: white;
+      z-index: 2;
+      box-shadow: 2px 0 0 rgba(0,0,0,0.04);
+    }
+    th:first-child { background: #f8fafd; z-index: 3; }
+    td {
+      padding: 0.65rem 0.6rem;
+      text-align: right;
+      border-bottom: 1px solid #eef2f6;
+      white-space: nowrap;
+      font-size: 0.8rem;
+      color: #58585A;
+      font-weight: 400;
+    }
+    tr:hover td { background: #fafcfd; }
+    tr:hover td:first-child { background: white; }
+    .district-name, .camp-name {
+      font-weight: 600;
+      color: #58585A;
+      font-size: 0.8rem;
+    }
+    .surveyed-positive, .accepted-neutral, .remaining-warn {
+      color: #58585A;
+      font-weight: 400;
+    }
+    .remaining-negative {
+      color: #EE5859;
+      font-weight: 600;
+    }
+    .progress-cell {
+      min-width: 150px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .progress-bar-container {
+      flex: 1;
+      height: 6px;
+      background: #e9edf2;
+      border-radius: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 0;
+      transition: width 0.3s ease;
+      background: #EE5859;
+    }
+    .progress-percentage {
+      font-size: 0.75rem;
+      font-weight: 400;
+      min-width: 35px;
+      text-align: right;
+      color: #58585A;
+    }
+    .vertical-divider {
+      border-left: 2px solid #d0d7e2;
+    }
+    .loading, .error-message {
+      text-align: center;
+      padding: 3rem;
+      font-size: 1rem;
+      color: #58585A;
+      background: white;
+      border: 1px dashed #cbd5e1;
+      border-radius: 0;
+    }
+    .error-message {
+      color: #EE5859;
+      border-color: #EE5859;
+      background: #fdf7f7;
+    }
+    @media (max-width: 768px) {
+      .navbar { flex-direction: column; align-items: stretch; padding: 0.5rem 0.8rem; }
+      .navbar-left { flex-direction: column; align-items: center; text-align: center; }
+      .navbar-title { font-size: 0.8rem; }
+      .nav-link { font-size: 0.65rem; }
+      .main-content { padding: 1rem 0.5rem; }
+      table { font-size: 0.75rem; }
+      th, td { padding: 0.5rem 0.4rem; }
+      .table-header { flex-direction: column; align-items: stretch; }
+      .view-switch { justify-content: center; }
+      .btn-download { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-left">
+      <span class="navbar-title">MSNA 2026 · Lebanon</span>
+      <span class="navbar-updated">(Updated: <span id="navLastUpdated">—</span>)</span>
+    </div>
+    <div class="navbar-right">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Survey Progress</a>
+        <a href="grid.html" class="nav-link active">Suammary Table</a>
+        <a href="enumerators.html" class="nav-link">Enumerators</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="table-header">
+      <h2 id="tableTitle">Survey progress by district</h2>
+      <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
+        <div class="view-switch" role="tablist" aria-label="Data view switch">
+          <button class="switch-btn active" id="districtViewBtn" data-view="district" role="tab" aria-selected="true">District</button>
+          <button class="switch-btn" id="campViewBtn" data-view="camp" role="tab" aria-selected="false">Camp</button>
+        </div>
+        <button class="btn-download" id="downloadCsvBtn" onclick="downloadCSV()">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 12L3 7H6V2H10V7H13L8 12Z" fill="white"/>
+            <path d="M2 14H14" stroke="white" stroke-width="1.5"/>
+          </svg>
+          Download CSV
+        </button>
+      </div>
+    </div>
+
+    <div class="table-responsive" id="tableContainer" style="display: none;">
+      <table id="progressTable">
+        <thead id="tableHead">
+          <!-- dynamic header injected -->
+        </thead>
+        <tbody id="tableBody">
+          <!-- rows injected -->
+        </tbody>
+      </table>
+    </div>
+
+    <div id="loadingMessage" class="loading">⏳ Loading survey data…</div>
+    <div id="errorMessage" class="error-message" style="display:none;">⚠️ Could not load data.</div>
+  </div>
+
+  <script>
+    (function() {
+      // ---- navbar update time ----
+      const navUpdated = document.getElementById('navLastUpdated');
+      async function loadUpdateDate() {
+        try {
+          const response = await fetch('data/partners.json');
+          if (response.ok) {
+            const data = await response.json();
+            if (data.updated && navUpdated) {
+              navUpdated.textContent = data.updated;
+            } else {
+              const now = new Date();
+              navUpdated.textContent = now.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+            }
+          } else {
+            throw new Error('HTTP ' + response.status);
+          }
+        } catch (e) {
+          const now = new Date();
+          if (navUpdated) {
+            navUpdated.textContent = now.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+          }
+        }
+      }
+      loadUpdateDate();
+
+      // ---- state ----
+      const tableBody = document.getElementById('tableBody');
+      const tableHead = document.getElementById('tableHead');
+      const loadingDiv = document.getElementById('loadingMessage');
+      const errorDiv = document.getElementById('errorMessage');
+      const tableContainer = document.getElementById('tableContainer');
+      const tableTitle = document.getElementById('tableTitle');
+      const districtBtn = document.getElementById('districtViewBtn');
+      const campBtn = document.getElementById('campViewBtn');
+
+      let currentView = 'district'; // 'district' or 'camp'
+      let currentData = [];
+      let currentSort = { column: null, direction: 'asc' };
+
+      // ---- utility ----
+      function calculateProgress(surveyed, target) {
+        return target > 0 ? Math.round((surveyed / target) * 100) : 0;
+      }
+
+      // ---- render functions (dynamic columns) ----
+      function renderDistrictTable(data) {
+        if (!Array.isArray(data) || data.length === 0) {
+          throw new Error('No district data found');
+        }
+        currentData = data;
+        tableTitle.textContent = 'Survey progress by district';
+        
+        // build header
+        tableHead.innerHTML = `
+          <tr>
+            <th class="sortable" data-sort="district" data-key="district">District</th>
+            <th class="sortable" data-sort="lebanese_target" data-key="lebanese_target">Leb target</th>
+            <th class="sortable" data-sort="lebanese_surveyed" data-key="lebanese_surveyed">Leb surveyed</th>
+            <th class="sortable" data-sort="lebanese_accepted" data-key="lebanese_accepted">Leb accepted</th>
+            <th class="sortable" data-sort="lebanese_remaining" data-key="lebanese_remaining">Leb remaining</th>
+            <th class="sortable" data-sort="lebanese_progress" data-key="lebanese_progress">Leb progress</th>
+            <th class="vertical-divider"></th>
+            <th class="sortable" data-sort="migrant_target" data-key="migrant_target">Mig target</th>
+            <th class="sortable" data-sort="migrant_surveyed" data-key="migrant_surveyed">Mig surveyed</th>
+            <th class="sortable" data-sort="migrant_accepted" data-key="migrant_accepted">Mig accepted</th>
+            <th class="sortable" data-sort="migrant_remaining" data-key="migrant_remaining">Mig remaining</th>
+            <th class="sortable" data-sort="migrant_progress" data-key="migrant_progress">Mig progress</th>
+          </tr>
+        `;
+        
+        tableBody.innerHTML = '';
+        data.forEach(row => {
+          const district = row.district || row.admin2 || 'Unknown';
+          const lebanese_target = Number(row.lebanese_target) || 0;
+          const lebanese_surveyed = Number(row.lebanese_surveyed) || 0;
+          const lebanese_accepted = Number(row.lebanese_accepted) || 0;
+          const lebanese_remaining = Number(row.lebanese_remaining) || 0;
+          const migrant_target = Number(row.migrant_target) || 0;
+          const migrant_surveyed = Number(row.migrant_surveyed) || 0;
+          const migrant_accepted = Number(row.migrant_accepted) || 0;
+          const migrant_remaining = Number(row.migrant_remaining) || 0;
+          
+          const lebanese_progress = calculateProgress(lebanese_surveyed, lebanese_target);
+          const migrant_progress = calculateProgress(migrant_surveyed, migrant_target);
+          
+          const lebRemainClass = lebanese_remaining < 0 ? 'remaining-negative' : '';
+          const migRemainClass = migrant_remaining < 0 ? 'remaining-negative' : '';
+          
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><span class="district-name">${district}</span></td>
+            <td>${lebanese_target}</td>
+            <td class="surveyed-positive">${lebanese_surveyed}</td>
+            <td class="accepted-neutral">${lebanese_accepted}</td>
+            <td class="${lebRemainClass}">${lebanese_remaining}</td>
+            <td>
+              <div class="progress-cell">
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill" style="width: ${Math.min(lebanese_progress, 100)}%;"></div>
+                </div>
+                <span class="progress-percentage">${lebanese_progress}%</span>
+              </div>
+            </td>
+            <td class="vertical-divider"></td>
+            <td>${migrant_target}</td>
+            <td class="surveyed-positive">${migrant_surveyed}</td>
+            <td class="accepted-neutral">${migrant_accepted}</td>
+            <td class="${migRemainClass}">${migrant_remaining}</td>
+            <td>
+              <div class="progress-cell">
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill" style="width: ${Math.min(migrant_progress, 100)}%;"></div>
+                </div>
+                <span class="progress-percentage">${migrant_progress}%</span>
+              </div>
+            </td>
+          `;
+          tableBody.appendChild(tr);
+        });
+        attachSorting();
+      }
+
+      function renderCampTable(data) {
+        if (!Array.isArray(data) || data.length === 0) {
+          throw new Error('No camp data found');
+        }
+        currentData = data;
+        tableTitle.textContent = 'Survey progress by camp (PRL & PRS)';
+        
+        tableHead.innerHTML = `
+          <tr>
+            <th class="sortable" data-sort="camp" data-key="camp">Camp</th>
+            <th class="sortable" data-sort="prl_target" data-key="prl_target">PRL target</th>
+            <th class="sortable" data-sort="prl_surveyed" data-key="prl_surveyed">PRL surveyed</th>
+            <th class="sortable" data-sort="prl_accepted" data-key="prl_accepted">PRL accepted</th>
+            <th class="sortable" data-sort="prl_remaining" data-key="prl_remaining">PRL remaining</th>
+            <th class="sortable" data-sort="prl_progress" data-key="prl_progress">PRL progress</th>
+            <th class="vertical-divider"></th>
+            <th class="sortable" data-sort="prs_target" data-key="prs_target">PRS target</th>
+            <th class="sortable" data-sort="prs_surveyed" data-key="prs_surveyed">PRS surveyed</th>
+            <th class="sortable" data-sort="prs_accepted" data-key="prs_accepted">PRS accepted</th>
+            <th class="sortable" data-sort="prs_remaining" data-key="prs_remaining">PRS remaining</th>
+            <th class="sortable" data-sort="prs_progress" data-key="prs_progress">PRS progress</th>
+          </tr>
+        `;
+        
+        tableBody.innerHTML = '';
+        data.forEach(row => {
+          const camp = row.camp || 'Unknown';
+          const prl_target = Number(row.prl_target) || 0;
+          const prl_surveyed = Number(row.prl_surveyed) || 0;
+          const prl_accepted = Number(row.prl_accepted) || 0;
+          const prl_remaining = Number(row.prl_remaining) || 0;
+          const prs_target = Number(row.prs_target) || 0;
+          const prs_surveyed = Number(row.prs_surveyed) || 0;
+          const prs_accepted = Number(row.prs_accepted) || 0;
+          const prs_remaining = Number(row.prs_remaining) || 0;
+          
+          const prl_progress = calculateProgress(prl_surveyed, prl_target);
+          const prs_progress = calculateProgress(prs_surveyed, prs_target);
+          
+          const prlRemainClass = prl_remaining < 0 ? 'remaining-negative' : '';
+          const prsRemainClass = prs_remaining < 0 ? 'remaining-negative' : '';
+          
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><span class="camp-name">${camp}</span></td>
+            <td>${prl_target}</td>
+            <td class="surveyed-positive">${prl_surveyed}</td>
+            <td class="accepted-neutral">${prl_accepted}</td>
+            <td class="${prlRemainClass}">${prl_remaining}</td>
+            <td>
+              <div class="progress-cell">
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill" style="width: ${Math.min(prl_progress, 100)}%;"></div>
+                </div>
+                <span class="progress-percentage">${prl_progress}%</span>
+              </div>
+            </td>
+            <td class="vertical-divider"></td>
+            <td>${prs_target}</td>
+            <td class="surveyed-positive">${prs_surveyed}</td>
+            <td class="accepted-neutral">${prs_accepted}</td>
+            <td class="${prsRemainClass}">${prs_remaining}</td>
+            <td>
+              <div class="progress-cell">
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill" style="width: ${Math.min(prs_progress, 100)}%;"></div>
+                </div>
+                <span class="progress-percentage">${prs_progress}%</span>
+              </div>
+            </td>
+          `;
+          tableBody.appendChild(tr);
+        });
+        attachSorting();
+      }
+
+      // ---- sorting ----
+      function attachSorting() {
+        const sortableHeaders = document.querySelectorAll('th.sortable');
+        sortableHeaders.forEach(th => {
+          th.removeEventListener('click', handleSortClick);
+          th.addEventListener('click', handleSortClick);
+        });
+      }
+
+      function handleSortClick(e) {
+        const th = e.currentTarget;
+        const column = th.dataset.sort; // e.g. 'district' or 'lebanese_surveyed'
+        if (!column) return;
+        
+        if (currentSort.column === column) {
+          currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+        } else {
+          currentSort.column = column;
+          currentSort.direction = 'asc';
+        }
+        
+        // update header classes
+        document.querySelectorAll('th.sortable').forEach(header => {
+          header.classList.remove('asc', 'desc');
+        });
+        th.classList.add(currentSort.direction);
+        
+        sortCurrentData(column, currentSort.direction);
+      }
+
+      function sortCurrentData(column, direction) {
+        if (!currentData.length) return;
+        const sorted = [...currentData].sort((a, b) => {
+          let aVal, bVal;
+          
+          if (column === 'district') {
+            aVal = (a.district || a.admin2 || '').toLowerCase();
+            bVal = (b.district || b.admin2 || '').toLowerCase();
+          } else if (column === 'camp') {
+            aVal = (a.camp || '').toLowerCase();
+            bVal = (b.camp || '').toLowerCase();
+          } else if (column.endsWith('_progress')) {
+            // compute progress for sort
+            if (column.startsWith('lebanese')) {
+              aVal = calculateProgress(a.lebanese_surveyed || 0, a.lebanese_target || 0);
+              bVal = calculateProgress(b.lebanese_surveyed || 0, b.lebanese_target || 0);
+            } else if (column.startsWith('migrant')) {
+              aVal = calculateProgress(a.migrant_surveyed || 0, a.migrant_target || 0);
+              bVal = calculateProgress(b.migrant_surveyed || 0, b.migrant_target || 0);
+            } else if (column.startsWith('prl')) {
+              aVal = calculateProgress(a.prl_surveyed || 0, a.prl_target || 0);
+              bVal = calculateProgress(b.prl_surveyed || 0, b.prl_target || 0);
+            } else if (column.startsWith('prs')) {
+              aVal = calculateProgress(a.prs_surveyed || 0, a.prs_target || 0);
+              bVal = calculateProgress(b.prs_surveyed || 0, b.prs_target || 0);
+            } else {
+              aVal = 0; bVal = 0;
+            }
+          } else {
+            aVal = Number(a[column]) || 0;
+            bVal = Number(b[column]) || 0;
+          }
+          
+          if (typeof aVal === 'string') {
+            return direction === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+          } else {
+            return direction === 'asc' ? aVal - bVal : bVal - aVal;
+          }
+        });
+        
+        // re-render based on current view
+        if (currentView === 'district') {
+          renderDistrictTable(sorted);
+        } else {
+          renderCampTable(sorted);
+        }
+      }
+
+      // ---- data fetching ----
+      async function loadView(view) {
+        loadingDiv.style.display = 'block';
+        errorDiv.style.display = 'none';
+        tableContainer.style.display = 'none';
+        
+        try {
+          let data;
+          if (view === 'district') {
+            const resp = await fetch('data/survey_per_district.json');
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            data = await resp.json();
+            renderDistrictTable(data);
+          } else {
+            const resp = await fetch('data/survey_per_camp.json');
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            data = await resp.json();
+            renderCampTable(data);
+          }
+          loadingDiv.style.display = 'none';
+          tableContainer.style.display = 'block';
+          currentSort = { column: null, direction: 'asc' };
+        } catch (err) {
+          console.error(`Error loading ${view} data:`, err);
+          loadingDiv.style.display = 'none';
+          errorDiv.style.display = 'block';
+          errorDiv.textContent = `⚠️ Could not load ${view} data: ${err.message}. Please check if ${view === 'district' ? 'survey_per_district.json' : 'survey_per_camp.json'} exists.`;
+        }
+      }
+
+      // ---- switch view ----
+      function setActiveView(view) {
+        currentView = view;
+        if (view === 'district') {
+          districtBtn.classList.add('active');
+          campBtn.classList.remove('active');
+          districtBtn.setAttribute('aria-selected', 'true');
+          campBtn.setAttribute('aria-selected', 'false');
+        } else {
+          campBtn.classList.add('active');
+          districtBtn.classList.remove('active');
+          campBtn.setAttribute('aria-selected', 'true');
+          districtBtn.setAttribute('aria-selected', 'false');
+        }
+        loadView(view);
+      }
+
+      districtBtn.addEventListener('click', () => setActiveView('district'));
+      campBtn.addEventListener('click', () => setActiveView('camp'));
+
+      // ---- Download CSV (based on current view) ----
+      window.downloadCSV = function() {
+        if (!currentData || currentData.length === 0) {
+          alert('No data available to download');
+          return;
+        }
+        
+        let headers, rows;
+        if (currentView === 'district') {
+          headers = [
+            'District', 'Lebanese Target', 'Lebanese Surveyed', 
+            'Lebanese Accepted', 'Lebanese Remaining', 'Lebanese Progress %',
+            'Migrant Target', 'Migrant Surveyed', 'Migrant Accepted', 
+            'Migrant Remaining', 'Migrant Progress %'
+          ];
+          rows = currentData.map(row => [
+            row.district || row.admin2 || 'Unknown',
+            row.lebanese_target || 0,
+            row.lebanese_surveyed || 0,
+            row.lebanese_accepted || 0,
+            row.lebanese_remaining || 0,
+            calculateProgress(row.lebanese_surveyed || 0, row.lebanese_target || 0) + '%',
+            row.migrant_target || 0,
+            row.migrant_surveyed || 0,
+            row.migrant_accepted || 0,
+            row.migrant_remaining || 0,
+            calculateProgress(row.migrant_surveyed || 0, row.migrant_target || 0) + '%'
+          ]);
+        } else {
+          headers = [
+            'Camp', 'PRL Target', 'PRL Surveyed', 'PRL Accepted', 'PRL Remaining', 'PRL Progress %',
+            'PRS Target', 'PRS Surveyed', 'PRS Accepted', 'PRS Remaining', 'PRS Progress %'
+          ];
+          rows = currentData.map(row => [
+            row.camp || 'Unknown',
+            row.prl_target || 0,
+            row.prl_surveyed || 0,
+            row.prl_accepted || 0,
+            row.prl_remaining || 0,
+            calculateProgress(row.prl_surveyed || 0, row.prl_target || 0) + '%',
+            row.prs_target || 0,
+            row.prs_surveyed || 0,
+            row.prs_accepted || 0,
+            row.prs_remaining || 0,
+            calculateProgress(row.prs_surveyed || 0, row.prs_target || 0) + '%'
+          ]);
+        }
+        
+        const csvContent = [headers, ...rows]
+          .map(row => row.map(cell => {
+            if (typeof cell === 'string' && (cell.includes(',') || cell.includes('"'))) {
+              return `"${cell.replace(/"/g, '""')}"`;
+            }
+            return cell;
+          }).join(','))
+          .join('\n');
+        
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', currentView === 'district' ? 'survey_progress_by_district.csv' : 'survey_progress_by_camp.csv');
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+
+      // initial load: district view
+      setActiveView('district');
+    })();
+  </script>
+</body>
+</html>

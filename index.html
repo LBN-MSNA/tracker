@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.8, user-scalable=yes" />
+  <title>MSNA 2026 · Lebanon – Survey Progress</title>
+  <style>
+    /* ----- reset & base ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f3f4f4;
+      font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* ----- navbar ----- */
+    .navbar {
+      background: #58585a;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .navbar-title { font-size: 0.95rem; text-transform: uppercase; }
+    .navbar-updated { font-size: 0.7rem; opacity: 0.85; font-weight: 400; }
+    .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .nav-link {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      padding: 0.2rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+    .nav-link:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.3); }
+    .nav-link.active { color: #fff; border-bottom-color: #ee5859; }
+
+    /* ----- dashboard grid ----- */
+    .dashboard {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0.6rem;
+      flex: 1;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+      min-height: 0;
+      align-items: stretch;
+    }
+    .summary-panel {
+      background: #fff;
+      padding: 0.8rem;
+      width: 400px;
+      min-width: 320px;
+      max-width: 420px;
+      border: 1px solid #dce3ed;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      overflow-y: auto;
+    }
+    .map-wrapper {
+      flex: 1;
+      min-width: 400px;
+      max-width: 650px;
+      background: #fff;
+      border: 1px solid #dce3ed;
+      display: flex;
+      flex-direction: column;
+    }
+    .map-container {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-container svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      background: #fff;
+      transform: scale(0.92);
+      transform-origin: center;
+    }
+    .detail-panel {
+      background: #fff;
+      padding: 0.8rem;
+      width: 400px;
+      min-width: 320px;
+      max-width: 420px;
+      border: 1px solid #dce3ed;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      overflow-y: auto;
+    }
+    .panel-title {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #1a2d42;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    /* ----- group cards (left) ----- */
+    .group-cards { display: flex; flex-direction: column; gap: 0.5rem; }
+    .group-card {
+      padding: 0.7rem 0.8rem;
+      border: 1px solid #dce3ed;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .group-card.overall { border-left: 3px solid #58585a; background: #f8fafd; }
+    .group-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .group-name { font-size: 0.78rem; font-weight: 700; color: #1a2d42; text-transform: uppercase; }
+    .group-badge { font-size: 0.85rem; font-weight: 700; color: #1a2d42; }
+    .progress-mini { width: 100%; height: 6px; background: #e9eef3; overflow: hidden; border-radius: 3px; }
+    .progress-mini-fill { height: 100%; background: #ee5859; width: 0%; transition: width 0.4s; }
+    .group-stats-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.2rem;
+      font-size: 0.7rem;
+    }
+    .stat-pill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    .stat-pill-label { font-size: 0.55rem; text-transform: uppercase; color: #6b7b8c; }
+    .stat-pill-value { font-weight: 700; color: #1a2d42; font-size: 0.8rem; }
+    
+    /* partner card */
+    .partner-card {
+      border: 1px solid #dce3ed;
+      background: #f9fbfd;
+      padding: 0.8rem;
+      margin-top: 0.2rem;
+    }
+    .partner-header {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #1a2d42;
+      letter-spacing: 0.3px;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .partner-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .partner-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      border-bottom: 1px dashed #e2e8f0;
+      padding-bottom: 0.25rem;
+    }
+    .partner-name { font-weight: 600; color: #2c3e50; }
+    .partner-surveyed { font-weight: 700; color: #1a2d42; padding: 0.15rem 0.5rem; }
+
+    /* toggle & map */
+    .toggle-group {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      background: rgba(255,255,255,0.95);
+      padding: 0px;
+      z-index: 20;
+      border-radius: 0px;
+    }
+    .toggle-btn {
+      background: #f3f4f4;
+      border: none;
+      padding: 0.3rem 0.9rem;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #4a627a;
+      cursor: pointer;
+      transition: 0.15s;
+      letter-spacing: 0.3px;
+      border-radius: 0px;
+    }
+    .toggle-btn.active { background: #ee5859; color: #fff; }
+    .toggle-btn:hover:not(.active) { background: #e8e9e9; }
+
+    /* SVG styles */
+    .map-container svg {
+      background: #fff;
+    }
+    .map-container svg .admin1,
+    .map-container svg .admin2 {
+      stroke: #2c3e50;
+      stroke-width: 0.8;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      transition: fill 0.2s, stroke 0.2s, filter 0.2s;
+      cursor: pointer;
+      vector-effect: non-scaling-stroke;
+      fill: #e9eef3;
+    }
+    .map-container svg .admin2 {
+      stroke: #5a6c7d;
+      stroke-width: 0.6;
+    }
+    .map-container svg .admin1:hover,
+    .map-container svg .admin2:hover {
+      stroke: #0b2b44;
+      stroke-width: 1.2;
+      filter: brightness(0.92);
+    }
+    .map-container svg .admin1.active,
+    .map-container svg .admin2.active {
+      stroke: #0b2b44;
+      stroke-width: 1.5;
+      filter: brightness(0.88);
+    }
+    .map-container svg .admin1-overlay {
+      fill: none !important;
+      stroke: #1a2d42 !important;
+      stroke-width: 0.8 !important;
+      stroke-linejoin: round !important;
+      stroke-linecap: round !important;
+      pointer-events: none !important;
+      opacity: 0.5 !important;
+      vector-effect: non-scaling-stroke !important;
+    }
+
+    /* tooltip */
+    .tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: #1a2d42;
+      color: #f1f7fe;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translate(-50%, -110%) scale(0.9);
+      transition: opacity 0.15s, transform 0.15s;
+      white-space: nowrap;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-width: 150px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+    }
+    .tooltip.visible { opacity: 1; transform: translate(-50%, -120%) scale(1); }
+    .tt-header { display: flex; align-items: baseline; gap: 0.3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.25rem; }
+    .tt-name { font-weight: 700; font-size: 0.85rem; }
+    .tt-stats { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.68rem; }
+    .tt-row { display: flex; justify-content: space-between; }
+    .tt-label { opacity: 0.75; }
+    .tt-value { font-weight: 600; }
+
+    /* detail panel region */
+    .detail-placeholder { color: #7f8c8d; font-size: 0.8rem; padding: 1.5rem 0.5rem; text-align: center; }
+    .region-card { display: flex; flex-direction: column; gap: 0.5rem; }
+    .region-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #1a2d42;
+      padding-bottom: 0.3rem;
+    }
+    .region-name { font-weight: 700; font-size: 1rem; color: #1a2d42; }
+    .region-code { font-size: 0.7rem; font-weight: 600; color: #4a627a; background: #e9eff6; padding: 0.15rem 0.5rem; border-radius: 3px; }
+    .region-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding: 0.5rem 0.6rem;
+      border: 1px solid #dce3ed;
+      background: #fafbfd;
+      border-radius: 3px;
+    }
+    .region-group-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #1a2d42;
+      text-transform: uppercase;
+    }
+    .progress-bar-sm { width: 100%; height: 5px; background: #e9eef3; overflow: hidden; border-radius: 2px; }
+    .progress-fill-sm { height: 100%; background: #ee5859; transition: width 0.4s; }
+    .region-stats-pills {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.2rem;
+      font-size: 0.6rem;
+      color: #4a627a;
+    }
+    .stat-pill-sm { flex: 1; display: flex; flex-direction: column; align-items: center; }
+    .stat-pill-sm-value { font-weight: 700; color: #1a2d42; font-size: 0.72rem; }
+
+    /* Simple legend overlay */
+    .legend-overlay {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      padding: 6px 10px;
+      border-radius: 2px;
+      background: rgba(246, 245, 245, 0.95);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 25;
+      font-size: 0.6rem;
+      color: #363b41;
+      font-weight: 600;
+    }
+    .legend-gradient-bar {
+      width: 120px;
+      height: 8px;
+      background: linear-gradient(to right, #fff, #1a2d42);
+      border: .3px solid #4a4a4a;
+      border-radius: 0px;
+    }
+
+    /* responsive */
+    @media (max-width: 1200px) {
+      .dashboard { flex-wrap: wrap; }
+      .summary-panel, .detail-panel { width: 100%; max-width: 100%; min-width: auto; max-height: 35vh; }
+      .map-wrapper { min-width: 300px; width: 100%; max-width: 100%; min-height: 45vh; }
+    }
+    @media (max-width: 768px) {
+      .dashboard { flex-direction: column; }
+      .summary-panel, .detail-panel { max-height: 50vh; }
+      .map-wrapper { min-height: 50vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-left" style="display: flex; align-items: baseline; gap: 0.5rem;">
+      <span class="navbar-title">MSNA 2026 · Lebanon</span>
+      <span class="navbar-updated">(Updated: <span id="navLastUpdated">—</span>)</span>
+    </div>
+    <div class="navbar-right">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Survey Progress</a>
+        <a href="grid.html" class="nav-link">Suammary Table</a>
+        <a href="enumerators.html" class="nav-link">Enumerators</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard" id="dashboardView">
+    <div class="summary-panel" id="summaryPanel">
+      <div class="panel-title">National Progress</div>
+      <div class="group-cards" id="groupCards"></div>
+      <!-- Partner card will be appended here by JS -->
+    </div>
+
+    <div class="map-wrapper">
+      <div class="map-container" id="mapContainer">
+        <div class="toggle-group">
+          <button class="toggle-btn active" data-layer="admin1" id="btnAdmin1">Governorates</button>
+          <button class="toggle-btn" data-layer="admin2" id="btnAdmin2">Districts</button>
+        </div>
+        <div class="tooltip" id="tooltip">
+          <div class="tt-header"><span class="tt-name" id="ttName"></span></div>
+          <div class="tt-stats">
+            <div class="tt-row"><span class="tt-label">Accepted</span><span class="tt-value" id="ttAccepted">—</span></div>
+            <div class="tt-row"><span class="tt-label">Remaining</span><span class="tt-value" id="ttRemaining">—</span></div>
+            <div class="tt-row"><span class="tt-label">Progress</span><span class="tt-value" id="ttProgress">—</span></div>
+          </div>
+        </div>
+        
+        <!-- Simple Legend Overlay -->
+        <div class="legend-overlay">
+          <span>0%</span>
+          <div class="legend-gradient-bar"></div>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-panel" id="detailPanel">
+      <div class="panel-title">Governorate / District Detail</div>
+      <div id="detailContent" class="detail-placeholder">Click on map to see details</div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      const GROUPS = ['lebanese', 'prl', 'prs', 'migrant'];
+      const GROUP_LABELS = { lebanese: 'Lebanese', prl: 'PRL', prs: 'PRS', migrant: 'Migrants' };
+      const COLOR_START = { r: 255, g: 255, b: 255 };
+      const COLOR_END = { r: 26, g: 45, b: 66 };
+      const DEFAULT_ADMIN1_PCODE = 'LB7';
+      const DEFAULT_ADMIN2_PCODE = 'LB51';
+
+      function calcProgress(accepted, target) { 
+        const a = parseFloat(accepted) || 0;
+        const t = parseFloat(target) || 0;
+        return t > 0 ? Math.round((a / t) * 100) : 0; 
+      }
+      function fmt(n) { 
+        const val = parseFloat(n) || 0;
+        return val.toLocaleString(); 
+      }
+      function cleanValue(val) {
+        if (val === "NA" || val === "NaN" || val === null || val === undefined) return 0;
+        const num = parseFloat(val);
+        return isNaN(num) ? 0 : num;
+      }
+      function getFill(pct) {
+        const p = Math.min(100, Math.max(0, pct || 0)) / 100;
+        const r = Math.round(COLOR_START.r + (COLOR_END.r - COLOR_START.r) * p);
+        const g = Math.round(COLOR_START.g + (COLOR_END.g - COLOR_START.g) * p);
+        const b = Math.round(COLOR_START.b + (COLOR_END.b - COLOR_START.b) * p);
+        return `rgb(${r},${g},${b})`;
+      }
+
+      let nationalData = null;
+      let admin1Data = null;
+      let admin2Data = null;
+      let partnersData = null;
+      let currentLayer = 'admin1';
+      let selectedPcode = null;
+
+      const mapContainer = document.getElementById('mapContainer');
+      const groupCards = document.getElementById('groupCards');
+      const detailContent = document.getElementById('detailContent');
+      const navLastUpdated = document.getElementById('navLastUpdated');
+      const tooltip = document.getElementById('tooltip');
+      const ttName = document.getElementById('ttName');
+      const ttAccepted = document.getElementById('ttAccepted');
+      const ttRemaining = document.getElementById('ttRemaining');
+      const ttProgress = document.getElementById('ttProgress');
+
+      async function loadData() {
+        try {
+          const [nat, a1, a2, partners] = await Promise.all([
+            fetch('data/national_report.json').then(r => r.json()),
+            fetch('data/admin1_report.json').then(r => r.json()),
+            fetch('data/admin2_report.json').then(r => r.json()),
+            fetch('data/partners.json').then(r => r.json()).catch(() => null)
+          ]);
+          nationalData = nat;
+          admin1Data = a1;
+          admin2Data = a2;
+          partnersData = partners;
+          
+          let updatedText = '—';
+          if (partnersData && partnersData.updated) {
+            updatedText = partnersData.updated;
+          } else {
+            updatedText = new Date().toISOString().split('T')[0];
+          }
+          navLastUpdated.textContent = updatedText;
+          
+          return true;
+        } catch (e) {
+          console.error('Load error:', e);
+          return false;
+        }
+      }
+
+      function cleanRegionData(region) {
+        if (!region) return null;
+        const cleaned = {};
+        GROUPS.forEach(g => {
+          const d = region[g] || {};
+          cleaned[g] = {
+            target: cleanValue(d.target),
+            surveyed: cleanValue(d.surveyed),
+            accepted: cleanValue(d.accepted),
+            remaining: cleanValue(d.remaining)
+          };
+        });
+        if (region.all_population) {
+          cleaned.all_population = {
+            target: cleanValue(region.all_population.target),
+            surveyed: cleanValue(region.all_population.surveyed),
+            accepted: cleanValue(region.all_population.accepted),
+            remaining: cleanValue(region.all_population.remaining)
+          };
+        }
+        return cleaned;
+      }
+
+      function renderNationalAndPartners() {
+        if (!nationalData) return;
+        let html = '';
+        const overall = {
+          target: 0, surveyed: 0, accepted: 0, remaining: 0
+        };
+        GROUPS.forEach(g => {
+          const d = nationalData[g] || { target: 0, surveyed: 0, accepted: 0, remaining: 0 };
+          overall.target += cleanValue(d.target);
+          overall.surveyed += cleanValue(d.surveyed);
+          overall.accepted += cleanValue(d.accepted);
+          overall.remaining += cleanValue(d.remaining);
+        });
+
+        const pct = calcProgress(overall.accepted, overall.target);
+        html += `
+          <div class="group-card overall">
+            <div class="group-header"><span class="group-name">All Groups</span><span class="group-badge">${pct}%</span></div>
+            <div class="progress-mini"><div class="progress-mini-fill" style="width:${pct}%"></div></div>
+            <div class="group-stats-row">
+              <div class="stat-pill"><span class="stat-pill-label">Target</span><span class="stat-pill-value">${fmt(overall.target)}</span></div>
+              <div class="stat-pill"><span class="stat-pill-label">Surveyed</span><span class="stat-pill-value">${fmt(overall.surveyed)}</span></div>
+              <div class="stat-pill"><span class="stat-pill-label">Accepted</span><span class="stat-pill-value">${fmt(overall.accepted)}</span></div>
+              <div class="stat-pill"><span class="stat-pill-label">Remaining</span><span class="stat-pill-value">${fmt(overall.remaining)}</span></div>
+            </div>
+          </div>`;
+
+        GROUPS.forEach(g => {
+          const d = nationalData[g] || { target: 0, surveyed: 0, accepted: 0, remaining: 0 };
+          const cleaned = {
+            target: cleanValue(d.target),
+            surveyed: cleanValue(d.surveyed),
+            accepted: cleanValue(d.accepted),
+            remaining: cleanValue(d.remaining)
+          };
+          const pct2 = calcProgress(cleaned.accepted, cleaned.target);
+          html += `
+            <div class="group-card">
+              <div class="group-header"><span class="group-name">${GROUP_LABELS[g]}</span><span class="group-badge">${pct2}%</span></div>
+              <div class="progress-mini"><div class="progress-mini-fill" style="width:${pct2}%"></div></div>
+              <div class="group-stats-row">
+                <div class="stat-pill"><span class="stat-pill-label">Target</span><span class="stat-pill-value">${fmt(cleaned.target)}</span></div>
+                <div class="stat-pill"><span class="stat-pill-label">Surveyed</span><span class="stat-pill-value">${fmt(cleaned.surveyed)}</span></div>
+                <div class="stat-pill"><span class="stat-pill-label">Accepted</span><span class="stat-pill-value">${fmt(cleaned.accepted)}</span></div>
+                <div class="stat-pill"><span class="stat-pill-label">Remaining</span><span class="stat-pill-value">${fmt(cleaned.remaining)}</span></div>
+              </div>
+            </div>`;
+        });
+        groupCards.innerHTML = html;
+
+        if (partnersData && partnersData.organizations && partnersData.organizations.length) {
+          let partnerHtml = `
+            <div class="partner-card">
+              <div class="partner-header"><span>Organizations</span><span style="font-weight:400; font-size:0.65rem; opacity:0.8;">Surveyed</span></div>
+              <div class="partner-list">`;
+          partnersData.organizations.forEach(org => {
+            partnerHtml += `
+              <div class="partner-row">
+                <span class="partner-name">${org.organization}</span>
+                <span class="partner-surveyed">${fmt(org.surveyed)}</span>
+              </div>`;
+          });
+          partnerHtml += `</div></div>`;
+          groupCards.insertAdjacentHTML('beforeend', partnerHtml);
+        }
+      }
+
+      function selectRegion(pcode, isAdmin1) {
+        const pathClass = isAdmin1 ? 'admin1' : 'admin2';
+        const paths = mapContainer.querySelectorAll(`.${pathClass}`);
+        let target = null;
+        for (let p of paths) {
+          if (p.getAttribute('data-pcode') === pcode) {
+            target = p;
+            break;
+          }
+        }
+        if (target) {
+          paths.forEach(p => p.classList.remove('active'));
+          target.classList.add('active');
+          const name = target.getAttribute('data-name') || pcode;
+          selectedPcode = pcode;
+          showDetail(pcode, name, isAdmin1);
+          return true;
+        }
+        return false;
+      }
+
+      function renderMap(layer) {
+        const isAdmin1 = (layer === 'admin1');
+        const dataMap = isAdmin1 ? admin1Data : admin2Data;
+        if (!dataMap) return;
+
+        const svgUrl = isAdmin1 ? 'assets/admin1_map.svg' : 'assets/admin2_map.svg';
+        fetch(svgUrl)
+          .then(res => res.text())
+          .then(svgText => {
+            const toggle = mapContainer.querySelector('.toggle-group');
+            const ttip = mapContainer.querySelector('.tooltip');
+            const legend = mapContainer.querySelector('.legend-overlay');
+            mapContainer.innerHTML = '';
+            if (toggle) mapContainer.appendChild(toggle);
+            if (ttip) mapContainer.appendChild(ttip);
+            if (legend) mapContainer.appendChild(legend);
+
+            mapContainer.insertAdjacentHTML('beforeend', svgText);
+
+            document.querySelectorAll('.toggle-btn').forEach(b => {
+              b.classList.toggle('active', b.dataset.layer === layer);
+            });
+
+            const svg = mapContainer.querySelector('svg');
+            if (svg) {
+              svg.removeAttribute('style');
+              if (!svg.getAttribute('viewBox')) {
+                const w = parseFloat(svg.getAttribute('width')) || 800;
+                const h = parseFloat(svg.getAttribute('height')) || 500;
+                svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+              }
+            }
+
+            const newTooltip = document.getElementById('tooltip') || ttip;
+            const newTtName = document.getElementById('ttName');
+            const newTtAccepted = document.getElementById('ttAccepted');
+            const newTtRemaining = document.getElementById('ttRemaining');
+            const newTtProgress = document.getElementById('ttProgress');
+
+            const pathClass = isAdmin1 ? 'admin1' : 'admin2';
+            const paths = mapContainer.querySelectorAll(`.${pathClass}`);
+            
+            paths.forEach(path => {
+              const pcode = path.getAttribute('data-pcode') || '';
+              const rawRegion = dataMap[pcode];
+              const region = rawRegion ? cleanRegionData(rawRegion) : null;
+              let pct = 0;
+              if (region && region.all_population) {
+                const acc = region.all_population.accepted || 0;
+                const tgt = region.all_population.target || 1;
+                pct = calcProgress(acc, tgt);
+              }
+              
+              path.style.fill = getFill(pct);
+              path.style.stroke = isAdmin1 ? '#2c3e50' : '#5a6c7d';
+              path.style.strokeWidth = isAdmin1 ? '0.8' : '0.6';
+              path.style.strokeLinejoin = 'round';
+              path.style.strokeLinecap = 'round';
+              path.style.cursor = 'pointer';
+              path.style.transition = 'fill 0.2s, stroke 0.2s, filter 0.2s';
+
+              const newPath = path.cloneNode(true);
+              path.parentNode.replaceChild(newPath, path);
+
+              newPath.addEventListener('mouseenter', (e) => {
+                const name = newPath.getAttribute('data-name') || pcode;
+                const rd = dataMap[pcode];
+                if (rd && rd.all_population) {
+                  const acc = cleanValue(rd.all_population.accepted);
+                  const rem = cleanValue(rd.all_population.remaining);
+                  const tgt = cleanValue(rd.all_population.target) || 1;
+                  const pctv = calcProgress(acc, tgt);
+                  if (newTtName) newTtName.textContent = name;
+                  if (newTtAccepted) newTtAccepted.textContent = `${fmt(acc)}/${fmt(tgt)}`;
+                  if (newTtRemaining) newTtRemaining.textContent = fmt(rem);
+                  if (newTtProgress) newTtProgress.textContent = `${pctv}%`;
+                }
+                if (newTooltip) {
+                  newTooltip.classList.add('visible');
+                  const rect = mapContainer.getBoundingClientRect();
+                  let x = e.clientX - rect.left;
+                  let y = e.clientY - rect.top;
+                  const tw = 150, th = 80;
+                  x = Math.min(Math.max(x, tw/2 + 8), rect.width - tw/2 - 8);
+                  let topPos = y - 14;
+                  if (topPos - th < 8) topPos = y + th/2 + 10;
+                  newTooltip.style.left = x + 'px';
+                  newTooltip.style.top = topPos + 'px';
+                }
+              });
+              newPath.addEventListener('mouseleave', () => {
+                if (newTooltip) newTooltip.classList.remove('visible');
+              });
+              newPath.addEventListener('click', () => {
+                const pcode = newPath.getAttribute('data-pcode') || '';
+                const name = newPath.getAttribute('data-name') || pcode;
+                selectedPcode = pcode;
+                showDetail(pcode, name, isAdmin1);
+                mapContainer.querySelectorAll(`.${pathClass}`).forEach(p => p.classList.remove('active'));
+                newPath.classList.add('active');
+              });
+            });
+
+            if (!isAdmin1) {
+              fetch('assets/admin1_map.svg')
+                .then(r => r.text())
+                .then(a1svg => {
+                  const div = document.createElement('div');
+                  div.innerHTML = a1svg;
+                  const overlayPaths = div.querySelectorAll('.admin1');
+                  const svgEl = mapContainer.querySelector('svg');
+                  if (svgEl) {
+                    const oldGroup = svgEl.querySelector('.admin1-overlay-group');
+                    if (oldGroup) oldGroup.remove();
+                    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                    g.setAttribute('class', 'admin1-overlay-group');
+                    overlayPaths.forEach(p => {
+                      const d = p.getAttribute('d');
+                      if (d) {
+                        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                        path.setAttribute('d', d);
+                        path.setAttribute('class', 'admin1-overlay');
+                        g.appendChild(path);
+                      }
+                    });
+                    svgEl.appendChild(g);
+                    mapContainer.classList.add('admin2-active');
+                  }
+                })
+                .catch(() => {});
+            } else {
+              mapContainer.classList.remove('admin2-active');
+              const svgEl = mapContainer.querySelector('svg');
+              if (svgEl) {
+                const oldGroup = svgEl.querySelector('.admin1-overlay-group');
+                if (oldGroup) oldGroup.remove();
+              }
+            }
+
+            currentLayer = layer;
+
+            setTimeout(() => {
+              const defaultPcode = isAdmin1 ? DEFAULT_ADMIN1_PCODE : DEFAULT_ADMIN2_PCODE;
+              const selected = selectRegion(defaultPcode, isAdmin1);
+              if (!selected) {
+                const paths2 = mapContainer.querySelectorAll(`.${pathClass}`);
+                if (paths2.length > 0) {
+                  const firstPath = paths2[0];
+                  const pcode = firstPath.getAttribute('data-pcode') || '';
+                  const name = firstPath.getAttribute('data-name') || pcode;
+                  firstPath.classList.add('active');
+                  selectedPcode = pcode;
+                  showDetail(pcode, name, isAdmin1);
+                }
+              }
+            }, 400);
+          })
+          .catch(err => {
+            mapContainer.innerHTML = `<div style="padding:2rem;color:#b91c1c;">Map file not found: ${svgUrl}</div>`;
+            const toggle = document.querySelector('.toggle-group');
+            if (toggle) mapContainer.prepend(toggle);
+          });
+      }
+
+      function showDetail(pcode, name, isAdmin1) {
+        const dataMap = isAdmin1 ? admin1Data : admin2Data;
+        const rawRegion = dataMap[pcode];
+        if (!rawRegion) {
+          detailContent.innerHTML = `<div class="detail-placeholder">No data for ${name}</div>`;
+          return;
+        }
+        const region = cleanRegionData(rawRegion);
+        let html = `
+          <div class="region-card">
+            <div class="region-header">
+              <span class="region-name">${name}</span>
+              <span class="region-code">${pcode}</span>
+            </div>`;
+        GROUPS.forEach(g => {
+          const d = region[g] || { target: 0, surveyed: 0, accepted: 0, remaining: 0 };
+          const pct = calcProgress(d.accepted, d.target);
+          html += `
+            <div class="region-group">
+              <div class="region-group-header"><span>${GROUP_LABELS[g]}</span><span>${pct}%</span></div>
+              <div class="progress-bar-sm"><div class="progress-fill-sm" style="width:${pct}%"></div></div>
+              <div class="region-stats-pills">
+                <div class="stat-pill-sm"><span>Target</span><span class="stat-pill-sm-value">${fmt(d.target)}</span></div>
+                <div class="stat-pill-sm"><span>Surveyed</span><span class="stat-pill-sm-value">${fmt(d.surveyed)}</span></div>
+                <div class="stat-pill-sm"><span>Accepted</span><span class="stat-pill-sm-value">${fmt(d.accepted)}</span></div>
+                <div class="stat-pill-sm"><span>Remaining</span><span class="stat-pill-sm-value">${fmt(d.remaining)}</span></div>
+              </div>
+            </div>`;
+        });
+        html += '</div>';
+        detailContent.innerHTML = html;
+      }
+
+      function setupToggles() {
+        document.addEventListener('click', (e) => {
+          const btn = e.target.closest('.toggle-btn');
+          if (!btn) return;
+          const layer = btn.dataset.layer;
+          if (layer === currentLayer) return;
+          renderMap(layer);
+        });
+      }
+
+      async function init() {
+        const ok = await loadData();
+        if (!ok) {
+          groupCards.innerHTML = '<div style="padding:1rem;color:#b91c1c;">Failed to load data</div>';
+          return;
+        }
+        renderNationalAndPartners();
+        renderMap('admin1');
+        setupToggles();
+      }
+
+      document.addEventListener('DOMContentLoaded', init);
+
+    })();
+  </script>
+</body>
+</html>

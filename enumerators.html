@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=1.8" />
+  <title>MSNA 2026 · Lebanon · Enumerator summary</title>
+  <style>
+    /* ---- Reset & Base ---- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f3f4f4;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #58585A;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .navbar {
+      background: #58585A;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+    .navbar-left { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .navbar-title { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.3px; font-weight: 700; }
+    .navbar-updated { font-size: 0.65rem; opacity: 0.7; font-weight: 400; }
+    .navbar-right { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .nav-link {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding: 0.2rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      background: transparent !important;
+      border-left: none !important;
+    }
+    .nav-link:hover { color: white; border-bottom-color: rgba(255,255,255,0.3); }
+    .nav-link.active { color: white; border-bottom-color: #EE5859; }
+
+    /* ---- Main content ---- */
+    .main-content {
+      flex: 1;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 1.8rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .header-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+      gap: 0.8rem;
+    }
+    .header-section h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: #58585A;
+    }
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .search-input {
+      background: white;
+      border: 1px solid #d0d7e2;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.8rem;
+      border-radius: 0;
+      min-width: 220px;
+      color: #58585A;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: #EE5859;
+    }
+    .btn-download {
+      background: #58585A;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      transition: background 0.2s;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-download:hover { background: #EE5859; }
+    .btn-download:active { background: #d04a4b; }
+
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #d0d7e2;
+      border-radius: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      min-width: 1100px;
+    }
+    th {
+      background: #f8fafd;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #58585A;
+      font-weight: 700;
+      padding: 0.8rem 0.6rem;
+      text-align: right;
+      border-bottom: 2px solid #EE5859;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+    th:hover { background: #f0f4f8; }
+    th.sortable::after {
+      content: '↕';
+      margin-left: 0.3rem;
+      opacity: 0.5;
+      font-size: 0.6rem;
+    }
+    th.sortable.asc::after {
+      content: '↑';
+      opacity: 1;
+      color: #EE5859;
+    }
+    th.sortable.desc::after {
+      content: '↓';
+      opacity: 1;
+      color: #EE5859;
+    }
+    th:first-child, td:first-child {
+      text-align: left;
+      position: sticky;
+      left: 0;
+      background: white;
+      z-index: 2;
+      box-shadow: 2px 0 0 rgba(0,0,0,0.04);
+    }
+    th:first-child { background: #f8fafd; z-index: 3; }
+    td {
+      padding: 0.65rem 0.6rem;
+      text-align: right;
+      border-bottom: 1px solid #eef2f6;
+      white-space: nowrap;
+      font-size: 0.8rem;
+      color: #58585A;
+      font-weight: 400;
+    }
+    tr:hover td { background: #fafcfd; }
+    tr:hover td:first-child { background: white; }
+    .enum-id {
+      font-weight: 600;
+      color: #58585A;
+    }
+    .null-value {
+      color: #9aa6b2;
+      font-style: italic;
+    }
+    .loading, .error-message {
+      text-align: center;
+      padding: 3rem;
+      font-size: 1rem;
+      color: #58585A;
+      background: white;
+      border: 1px dashed #cbd5e1;
+      border-radius: 0;
+    }
+    .error-message {
+      color: #EE5859;
+      border-color: #EE5859;
+      background: #fdf7f7;
+    }
+    @media (max-width: 768px) {
+      .navbar { flex-direction: column; align-items: stretch; padding: 0.5rem 0.8rem; }
+      .navbar-left { flex-direction: column; align-items: center; text-align: center; }
+      .navbar-title { font-size: 0.8rem; }
+      .nav-link { font-size: 0.65rem; }
+      .main-content { padding: 1rem 0.5rem; }
+      table { font-size: 0.75rem; }
+      th, td { padding: 0.5rem 0.4rem; }
+      .header-section { flex-direction: column; align-items: stretch; }
+      .search-wrapper { justify-content: center; }
+      .search-input { width: 100%; }
+      .btn-download { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-left">
+      <span class="navbar-title">MSNA 2026 · Lebanon</span>
+      <span class="navbar-updated">(Updated: <span id="navLastUpdated">—</span>)</span>
+    </div>
+    <div class="navbar-right">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Survey Progress</a>
+        <a href="grid.html" class="nav-link">Suammary Table</a>
+        <a href="enumerators.html" class="nav-link active">Enumerators</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header-section">
+      <h2 id="tableTitle">Enumerator summary</h2>
+      <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search enumerator ID..." autocomplete="off">
+        <button class="btn-download" id="downloadCsvBtn" onclick="downloadCSV()">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 12L3 7H6V2H10V7H13L8 12Z" fill="white"/>
+            <path d="M2 14H14" stroke="white" stroke-width="1.5"/>
+          </svg>
+          Download CSV
+        </button>
+      </div>
+    </div>
+
+    <div class="table-responsive" id="tableContainer" style="display: none;">
+      <table id="enumeratorTable">
+        <thead id="tableHead"></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <div id="loadingMessage" class="loading">⏳ Loading enumerator data…</div>
+    <div id="errorMessage" class="error-message" style="display:none;">⚠️ Could not load data.</div>
+  </div>
+
+  <script>
+    (function() {
+      const navUpdated = document.getElementById('navLastUpdated');
+      async function loadUpdateDate() {
+        try {
+          const response = await fetch('data/partners.json');
+          if (response.ok) {
+            const data = await response.json();
+            if (data.updated && navUpdated) {
+              navUpdated.textContent = data.updated;
+            } else {
+              const now = new Date();
+              navUpdated.textContent = now.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+            }
+          } else {
+            throw new Error('HTTP ' + response.status);
+          }
+        } catch (e) {
+          const now = new Date();
+          if (navUpdated) {
+            navUpdated.textContent = now.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+          }
+        }
+      }
+      loadUpdateDate();
+
+      // ---- DOM elements ----
+      const tableBody = document.getElementById('tableBody');
+      const tableHead = document.getElementById('tableHead');
+      const loadingDiv = document.getElementById('loadingMessage');
+      const errorDiv = document.getElementById('errorMessage');
+      const tableContainer = document.getElementById('tableContainer');
+      const searchInput = document.getElementById('searchInput');
+
+      let allData = [];
+      let filteredData = [];
+      let currentSort = { column: null, direction: 'asc' };
+
+      // ---- column definitions (updated for new data structure) ----
+      const columns = [
+        { key: 'enum_id', label: 'Enumerator ID', sortable: true, numeric: false },
+        { key: 'survey', label: 'Surveys', sortable: true, numeric: true },
+        { key: 'clogs', label: 'Logical logs', sortable: true, numeric: true },
+        { key: 'no_consent', label: 'No consent', sortable: true, numeric: true },
+        { key: 'hh_size_mean', label: 'Avg HH size', sortable: true, numeric: true },
+        { key: 'count_999_mean', label: 'Avg 999', sortable: true, numeric: true },
+        { key: 'count_dnk_mean', label: 'Avg DNK', sortable: true, numeric: true },
+        { key: 'count_pnta_mean', label: 'Avg PNTA', sortable: true, numeric: true },
+        { key: 'roster_duration_prop', label: 'Roster duration', sortable: true, numeric: true },
+        { key: 'audit_edit_count', label: 'Audit edits', sortable: true, numeric: true },
+        { key: 'interview_duration_mean', label: 'Interview duration', sortable: true, numeric: true },
+        { key: 'fsl_fcs_score', label: 'FCS score', sortable: true, numeric: true }
+      ];
+
+      // ---- utility ----
+      function formatCell(value) {
+        if (value === null || value === undefined) {
+          return '<span class="null-value">null</span>';
+        }
+        if (typeof value === 'number') {
+          if (Number.isInteger(value)) return value.toString();
+          return value.toFixed(2);
+        }
+        return value;
+      }
+
+      // ---- render table based on filteredData and currentSort ----
+      function renderTable() {
+        if (!filteredData.length) {
+          tableBody.innerHTML = `<tr><td colspan="${columns.length}" style="text-align:center; padding:2rem;">No enumerators found.</td></tr>`;
+          return;
+        }
+
+        // build header
+        let headerHtml = '<tr>';
+        columns.forEach(col => {
+          const sortClass = currentSort.column === col.key ? (currentSort.direction === 'asc' ? 'asc' : 'desc') : '';
+          headerHtml += `<th class="sortable ${sortClass}" data-key="${col.key}" data-numeric="${col.numeric}">${col.label}</th>`;
+        });
+        headerHtml += '</tr>';
+        tableHead.innerHTML = headerHtml;
+
+        // build rows
+        let rowsHtml = '';
+        filteredData.forEach(row => {
+          rowsHtml += '<tr>';
+          columns.forEach(col => {
+            let val = row[col.key];
+            if (col.key === 'enum_id') {
+              rowsHtml += `<td><span class="enum-id">${formatCell(val)}</span></td>`;
+            } else {
+              rowsHtml += `<td>${formatCell(val)}</td>`;
+            }
+          });
+          rowsHtml += '</tr>';
+        });
+        tableBody.innerHTML = rowsHtml;
+
+        // attach click handlers to sortable headers
+        document.querySelectorAll('th.sortable').forEach(th => {
+          th.removeEventListener('click', handleSortClick);
+          th.addEventListener('click', handleSortClick);
+        });
+      }
+
+      // ---- sorting handler ----
+      function handleSortClick(e) {
+        const th = e.currentTarget;
+        const key = th.dataset.key;
+        const numeric = th.dataset.numeric === 'true';
+        
+        if (currentSort.column === key) {
+          currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+        } else {
+          currentSort.column = key;
+          currentSort.direction = 'asc';
+        }
+
+        sortFilteredData(numeric);
+        renderTable();
+      }
+
+      function sortFilteredData(numeric) {
+        const key = currentSort.column;
+        const dir = currentSort.direction;
+        filteredData.sort((a, b) => {
+          let aVal = a[key];
+          let bVal = b[key];
+
+          if (aVal === null || aVal === undefined) aVal = '';
+          if (bVal === null || bVal === undefined) bVal = '';
+
+          if (numeric) {
+            aVal = parseFloat(aVal);
+            bVal = parseFloat(bVal);
+            if (isNaN(aVal)) aVal = -Infinity;
+            if (isNaN(bVal)) bVal = -Infinity;
+            return dir === 'asc' ? aVal - bVal : bVal - aVal;
+          } else {
+            aVal = String(aVal).toLowerCase();
+            bVal = String(bVal).toLowerCase();
+            return dir === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+          }
+        });
+      }
+
+      // ---- search filter ----
+      function applySearchFilter() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (!query) {
+          filteredData = [...allData];
+        } else {
+          filteredData = allData.filter(row => {
+            return (row.enum_id || '').toLowerCase().includes(query);
+          });
+        }
+        if (currentSort.column) {
+          const numeric = columns.find(c => c.key === currentSort.column)?.numeric || false;
+          sortFilteredData(numeric);
+        }
+        renderTable();
+      }
+
+      // ---- load data ----
+      async function loadData() {
+        loadingDiv.style.display = 'block';
+        errorDiv.style.display = 'none';
+        tableContainer.style.display = 'none';
+
+        try {
+          const resp = await fetch('data/enum_summary.json');
+          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+          const data = await resp.json();
+          if (!Array.isArray(data)) throw new Error('Invalid data format');
+          
+          allData = data;
+          filteredData = [...allData];
+          currentSort = { column: null, direction: 'asc' };
+          renderTable();
+          
+          loadingDiv.style.display = 'none';
+          tableContainer.style.display = 'block';
+        } catch (err) {
+          console.error('Error loading enum_summary.json:', err);
+          loadingDiv.style.display = 'none';
+          errorDiv.style.display = 'block';
+          errorDiv.textContent = `⚠️ Could not load enumerator data: ${err.message}. Please check if enum_summary.json exists.`;
+        }
+      }
+
+      // ---- Download CSV (based on filteredData) ----
+      window.downloadCSV = function() {
+        if (!filteredData.length) {
+          alert('No data available to download');
+          return;
+        }
+
+        const headers = columns.map(c => c.label);
+        const rows = filteredData.map(row => {
+          return columns.map(c => {
+            let val = row[c.key];
+            if (val === null || val === undefined) return '';
+            if (typeof val === 'number') {
+              return Number.isInteger(val) ? String(val) : val.toFixed(2);
+            }
+            return String(val);
+          });
+        });
+
+        const csvContent = [headers, ...rows]
+          .map(row => row.map(cell => {
+            if (typeof cell === 'string' && (cell.includes(',') || cell.includes('"'))) {
+              return `"${cell.replace(/"/g, '""')}"`;
+            }
+            return cell;
+          }).join(','))
+          .join('\n');
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'enumerator_summary.csv');
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+
+      // ---- event listeners ----
+      searchInput.addEventListener('input', applySearchFilter);
+
+      // initial load
+      loadData();
+    })();
+  </script>
+</body>
+</html>

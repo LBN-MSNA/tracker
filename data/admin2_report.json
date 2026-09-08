@@ -1,0 +1,860 @@
+{
+  "LB11": {
+    "label": "Beirut",
+    "all_population": {
+      "target": 627,
+      "surveyed": 189,
+      "accepted": 189,
+      "remaining": 438
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 216
+    },
+    "prl": {
+      "target": 90,
+      "surveyed": 60,
+      "accepted": 60,
+      "remaining": 30
+    },
+    "prs": {
+      "target": 51,
+      "surveyed": 19,
+      "accepted": 19,
+      "remaining": 32
+    },
+    "migrant": {
+      "target": 270,
+      "surveyed": 110,
+      "accepted": 110,
+      "remaining": 160
+    }
+  },
+  "LB21": {
+    "label": "Baalbek",
+    "all_population": {
+      "target": 422,
+      "surveyed": 345,
+      "accepted": 329,
+      "remaining": 93
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 221,
+      "accepted": 205,
+      "remaining": 11
+    },
+    "prl": {
+      "target": 102,
+      "surveyed": 102,
+      "accepted": 102,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 87,
+      "surveyed": 22,
+      "accepted": 22,
+      "remaining": 65
+    },
+    "migrant": {
+      "target": 17,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 17
+    }
+  },
+  "LB22": {
+    "label": "El Hermel",
+    "all_population": {
+      "target": 258,
+      "surveyed": 78,
+      "accepted": 78,
+      "remaining": 180
+    },
+    "lebanese": {
+      "target": 215,
+      "surveyed": 78,
+      "accepted": 78,
+      "remaining": 137
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 43,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 43
+    }
+  },
+  "LB23": {
+    "label": "Rachaya",
+    "all_population": {
+      "target": 215,
+      "surveyed": 29,
+      "accepted": 26,
+      "remaining": 189
+    },
+    "lebanese": {
+      "target": 215,
+      "surveyed": 29,
+      "accepted": 26,
+      "remaining": 189
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    }
+  },
+  "LB24": {
+    "label": "West Bekaa",
+    "all_population": {
+      "target": 229,
+      "surveyed": 14,
+      "accepted": 14,
+      "remaining": 215
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 1,
+      "accepted": 1,
+      "remaining": 215
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 13,
+      "surveyed": 13,
+      "accepted": 13,
+      "remaining": 0
+    }
+  },
+  "LB25": {
+    "label": "Zahle",
+    "all_population": {
+      "target": 291,
+      "surveyed": 254,
+      "accepted": 248,
+      "remaining": 43
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 183,
+      "accepted": 177,
+      "remaining": 39
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 75,
+      "surveyed": 71,
+      "accepted": 71,
+      "remaining": 4
+    }
+  },
+  "LB31": {
+    "label": "Aley",
+    "all_population": {
+      "target": 361,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "migrant": {
+      "target": 145,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    }
+  },
+  "LB32": {
+    "label": "Baabda",
+    "all_population": {
+      "target": 690,
+      "surveyed": 250,
+      "accepted": 236,
+      "remaining": 454
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 56,
+      "accepted": 42,
+      "remaining": 174
+    },
+    "prl": {
+      "target": 210,
+      "surveyed": 145,
+      "accepted": 145,
+      "remaining": 65
+    },
+    "prs": {
+      "target": 190,
+      "surveyed": 49,
+      "accepted": 49,
+      "remaining": 141
+    },
+    "migrant": {
+      "target": 74,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 74
+    }
+  },
+  "LB33": {
+    "label": "Chouf",
+    "all_population": {
+      "target": 226,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "migrant": {
+      "target": 10,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    }
+  },
+  "LB34": {
+    "label": "Jbeil",
+    "all_population": {
+      "target": 256,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    },
+    "migrant": {
+      "target": 40,
+      "surveyed": "NA",
+      "accepted": "NA",
+      "remaining": "NA"
+    }
+  },
+  "LB35": {
+    "label": "Kesrwane",
+    "all_population": {
+      "target": 236,
+      "surveyed": 1,
+      "accepted": 1,
+      "remaining": 235
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 1,
+      "accepted": 1,
+      "remaining": 215
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 20,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 20
+    }
+  },
+  "LB36": {
+    "label": "El Meten",
+    "all_population": {
+      "target": 496,
+      "surveyed": 52,
+      "accepted": 52,
+      "remaining": 444
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 216
+    },
+    "prl": {
+      "target": 95,
+      "surveyed": 52,
+      "accepted": 52,
+      "remaining": 43
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 185,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 185
+    }
+  },
+  "LB41": {
+    "label": "Bent Jbeil",
+    "all_population": {
+      "target": 215,
+      "surveyed": 86,
+      "accepted": 86,
+      "remaining": 129
+    },
+    "lebanese": {
+      "target": 215,
+      "surveyed": 86,
+      "accepted": 86,
+      "remaining": 129
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    }
+  },
+  "LB42": {
+    "label": "Hasbaya",
+    "all_population": {
+      "target": 215,
+      "surveyed": 106,
+      "accepted": 106,
+      "remaining": 109
+    },
+    "lebanese": {
+      "target": 215,
+      "surveyed": 106,
+      "accepted": 106,
+      "remaining": 109
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    }
+  },
+  "LB43": {
+    "label": "Marjaayoun",
+    "all_population": {
+      "target": 213,
+      "surveyed": 114,
+      "accepted": 114,
+      "remaining": 99
+    },
+    "lebanese": {
+      "target": 213,
+      "surveyed": 114,
+      "accepted": 114,
+      "remaining": 99
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    }
+  },
+  "LB44": {
+    "label": "El Nabatieh",
+    "all_population": {
+      "target": 286,
+      "surveyed": 105,
+      "accepted": 105,
+      "remaining": 181
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 100,
+      "accepted": 100,
+      "remaining": 116
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 70,
+      "surveyed": 5,
+      "accepted": 5,
+      "remaining": 65
+    }
+  },
+  "LB51": {
+    "label": "Akkar",
+    "all_population": {
+      "target": 471,
+      "surveyed": 250,
+      "accepted": 250,
+      "remaining": 221
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 95,
+      "accepted": 95,
+      "remaining": 121
+    },
+    "prl": {
+      "target": 106,
+      "surveyed": 89,
+      "accepted": 89,
+      "remaining": 17
+    },
+    "prs": {
+      "target": 98,
+      "surveyed": 26,
+      "accepted": 26,
+      "remaining": 72
+    },
+    "migrant": {
+      "target": 51,
+      "surveyed": 40,
+      "accepted": 40,
+      "remaining": 11
+    }
+  },
+  "LB52": {
+    "label": "El Batroun",
+    "all_population": {
+      "target": 290,
+      "surveyed": 16,
+      "accepted": 16,
+      "remaining": 274
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 216
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 74,
+      "surveyed": 16,
+      "accepted": 16,
+      "remaining": 58
+    }
+  },
+  "LB53": {
+    "label": "Bcharre",
+    "all_population": {
+      "target": 225,
+      "surveyed": 8,
+      "accepted": 8,
+      "remaining": 217
+    },
+    "lebanese": {
+      "target": 215,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 215
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 10,
+      "surveyed": 8,
+      "accepted": 8,
+      "remaining": 2
+    }
+  },
+  "LB54": {
+    "label": "El Koura",
+    "all_population": {
+      "target": 239,
+      "surveyed": 15,
+      "accepted": 15,
+      "remaining": 224
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 216
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 23,
+      "surveyed": 15,
+      "accepted": 15,
+      "remaining": 8
+    }
+  },
+  "LB55": {
+    "label": "El Minieh-Dennie",
+    "all_population": {
+      "target": 421,
+      "surveyed": 111,
+      "accepted": 111,
+      "remaining": 310
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 216
+    },
+    "prl": {
+      "target": 106,
+      "surveyed": 64,
+      "accepted": 64,
+      "remaining": 42
+    },
+    "prs": {
+      "target": 99,
+      "surveyed": 47,
+      "accepted": 47,
+      "remaining": 52
+    },
+    "migrant": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    }
+  },
+  "LB56": {
+    "label": "Tripoli",
+    "all_population": {
+      "target": 226,
+      "surveyed": 8,
+      "accepted": 8,
+      "remaining": 218
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 216
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 10,
+      "surveyed": 8,
+      "accepted": 8,
+      "remaining": 2
+    }
+  },
+  "LB57": {
+    "label": "Zgharta",
+    "all_population": {
+      "target": 234,
+      "surveyed": 12,
+      "accepted": 12,
+      "remaining": 222
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 216
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 18,
+      "surveyed": 12,
+      "accepted": 12,
+      "remaining": 6
+    }
+  },
+  "LB61": {
+    "label": "Saida",
+    "all_population": {
+      "target": 685,
+      "surveyed": 474,
+      "accepted": 474,
+      "remaining": 211
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 101,
+      "accepted": 101,
+      "remaining": 115
+    },
+    "prl": {
+      "target": 210,
+      "surveyed": 210,
+      "accepted": 210,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 174,
+      "surveyed": 113,
+      "accepted": 113,
+      "remaining": 61
+    },
+    "migrant": {
+      "target": 85,
+      "surveyed": 50,
+      "accepted": 50,
+      "remaining": 35
+    }
+  },
+  "LB62": {
+    "label": "Jezzine",
+    "all_population": {
+      "target": 220,
+      "surveyed": 102,
+      "accepted": 101,
+      "remaining": 119
+    },
+    "lebanese": {
+      "target": 215,
+      "surveyed": 102,
+      "accepted": 101,
+      "remaining": 114
+    },
+    "prl": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "prs": {
+      "target": 0,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 0
+    },
+    "migrant": {
+      "target": 5,
+      "surveyed": 0,
+      "accepted": 0,
+      "remaining": 5
+    }
+  },
+  "LB63": {
+    "label": "Sour",
+    "all_population": {
+      "target": 910,
+      "surveyed": 460,
+      "accepted": 456,
+      "remaining": 454
+    },
+    "lebanese": {
+      "target": 216,
+      "surveyed": 107,
+      "accepted": 106,
+      "remaining": 110
+    },
+    "prl": {
+      "target": 317,
+      "surveyed": 270,
+      "accepted": 267,
+      "remaining": 50
+    },
+    "prs": {
+      "target": 266,
+      "surveyed": 62,
+      "accepted": 62,
+      "remaining": 204
+    },
+    "migrant": {
+      "target": 111,
+      "surveyed": 21,
+      "accepted": 21,
+      "remaining": 90
+    }
+  }
+}

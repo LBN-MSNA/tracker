@@ -1,0 +1,32 @@
+{
+  "all_population": {
+    "target": 9157,
+    "surveyed": 3079,
+    "accepted": 3035,
+    "remaining": 6122
+  },
+  "lebanese": {
+    "target": 5607,
+    "surveyed": 1380,
+    "accepted": 1339,
+    "remaining": 4268
+  },
+  "prl": {
+    "target": 1236,
+    "surveyed": 992,
+    "accepted": 989,
+    "remaining": 247
+  },
+  "prs": {
+    "target": 965,
+    "surveyed": 338,
+    "accepted": 338,
+    "remaining": 627
+  },
+  "migrant": {
+    "target": 1349,
+    "surveyed": 369,
+    "accepted": 369,
+    "remaining": 980
+  }
+}
