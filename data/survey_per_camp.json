@@ -2,13 +2,13 @@
   {
     "camp": "Mar Elias Camp",
     "prl_target": 90,
-    "prl_surveyed": 60,
-    "prl_accepted": 60,
-    "prl_remaining": 30,
+    "prl_surveyed": 80,
+    "prl_accepted": 80,
+    "prl_remaining": 10,
     "prs_target": 51,
-    "prs_surveyed": 19,
-    "prs_accepted": 19,
-    "prs_remaining": 32
+    "prs_surveyed": 24,
+    "prs_accepted": 24,
+    "prs_remaining": 27
   },
   {
     "camp": "Wavel Camp",
@@ -17,38 +17,38 @@
     "prl_accepted": 102,
     "prl_remaining": 0,
     "prs_target": 87,
-    "prs_surveyed": 22,
-    "prs_accepted": 22,
-    "prs_remaining": 65
+    "prs_surveyed": 48,
+    "prs_accepted": 48,
+    "prs_remaining": 39
   },
   {
     "camp": "Burj Barajneh Camp",
     "prl_target": 106,
-    "prl_surveyed": 70,
-    "prl_accepted": 70,
-    "prl_remaining": 36,
+    "prl_surveyed": 83,
+    "prl_accepted": 83,
+    "prl_remaining": 23,
     "prs_target": 96,
-    "prs_surveyed": 16,
-    "prs_accepted": 16,
-    "prs_remaining": 80
+    "prs_surveyed": 20,
+    "prs_accepted": 20,
+    "prs_remaining": 76
   },
   {
     "camp": "Chatila Camp",
     "prl_target": 104,
-    "prl_surveyed": 75,
-    "prl_accepted": 75,
-    "prl_remaining": 29,
+    "prl_surveyed": 85,
+    "prl_accepted": 85,
+    "prl_remaining": 19,
     "prs_target": 94,
-    "prs_surveyed": 33,
-    "prs_accepted": 33,
-    "prs_remaining": 61
+    "prs_surveyed": 40,
+    "prs_accepted": 40,
+    "prs_remaining": 54
   },
   {
     "camp": "Dbayeh Camp",
     "prl_target": 95,
-    "prl_surveyed": 52,
-    "prl_accepted": 52,
-    "prl_remaining": 43,
+    "prl_surveyed": 64,
+    "prl_accepted": 64,
+    "prl_remaining": 31,
     "prs_target": 0,
     "prs_surveyed": 0,
     "prs_accepted": 0,
@@ -57,24 +57,24 @@
   {
     "camp": "Nahr El Bared Camp",
     "prl_target": 106,
-    "prl_surveyed": 89,
-    "prl_accepted": 89,
-    "prl_remaining": 17,
+    "prl_surveyed": 102,
+    "prl_accepted": 102,
+    "prl_remaining": 4,
     "prs_target": 98,
-    "prs_surveyed": 26,
-    "prs_accepted": 26,
-    "prs_remaining": 72
+    "prs_surveyed": 48,
+    "prs_accepted": 48,
+    "prs_remaining": 50
   },
   {
     "camp": "Beddawi Camp",
     "prl_target": 106,
-    "prl_surveyed": 64,
-    "prl_accepted": 64,
-    "prl_remaining": 42,
+    "prl_surveyed": 79,
+    "prl_accepted": 79,
+    "prl_remaining": 27,
     "prs_target": 99,
-    "prs_surveyed": 47,
-    "prs_accepted": 47,
-    "prs_remaining": 52
+    "prs_surveyed": 59,
+    "prs_accepted": 59,
+    "prs_remaining": 40
   },
   {
     "camp": "Ein El Hilweh Camp",
@@ -83,9 +83,9 @@
     "prl_accepted": 103,
     "prl_remaining": 3,
     "prs_target": 103,
-    "prs_surveyed": 68,
-    "prs_accepted": 68,
-    "prs_remaining": 35
+    "prs_surveyed": 107,
+    "prs_accepted": 107,
+    "prs_remaining": -4
   },
   {
     "camp": "Mia Mia Camp",
@@ -94,9 +94,9 @@
     "prl_accepted": 107,
     "prl_remaining": -3,
     "prs_target": 71,
-    "prs_surveyed": 45,
-    "prs_accepted": 45,
-    "prs_remaining": 26
+    "prs_surveyed": 49,
+    "prs_accepted": 49,
+    "prs_remaining": 22
   },
   {
     "camp": "Burj Shamali Camp",
@@ -105,9 +105,9 @@
     "prl_accepted": 100,
     "prl_remaining": 3,
     "prs_target": 101,
-    "prs_surveyed": 9,
-    "prs_accepted": 9,
-    "prs_remaining": 92
+    "prs_surveyed": 34,
+    "prs_accepted": 34,
+    "prs_remaining": 67
   },
   {
     "camp": "Buss Camp",
@@ -116,16 +116,16 @@
     "prl_accepted": 105,
     "prl_remaining": 0,
     "prs_target": 81,
-    "prs_surveyed": 16,
-    "prs_accepted": 16,
-    "prs_remaining": 65
+    "prs_surveyed": 44,
+    "prs_accepted": 44,
+    "prs_remaining": 37
   },
   {
     "camp": "Rashidieh Camp",
     "prl_target": 106,
-    "prl_surveyed": 62,
-    "prl_accepted": 62,
-    "prl_remaining": 44,
+    "prl_surveyed": 91,
+    "prl_accepted": 91,
+    "prl_remaining": 15,
     "prs_target": 84,
     "prs_surveyed": 37,
     "prs_accepted": 37,
