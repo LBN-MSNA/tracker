@@ -461,15 +461,46 @@
       const ttRemaining = document.getElementById('ttRemaining');
       const ttProgress = document.getElementById('ttProgress');
 
+      // ------------------------------------------------------------------
+      // Fetch with aggressive cache bypass (browser + CDN friendly)
+      // ------------------------------------------------------------------
+      async function fetchNoCache(url) {
+        // 1) Unique query string defeats browser & CDN cache
+        const bust = (url.includes('?') ? '&' : '?') + 'v=' + Date.now() + '-' + Math.random().toString(36).slice(2);
+        // 2) Request options ask every layer to skip cache
+        const opts = {
+          cache: 'no-store',
+          credentials: 'same-origin',
+          redirect: 'follow',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+          }
+        };
+        const res = await fetch(url + bust, opts);
+        if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+        return res;
+      }
+
+      // Safely parse JSON; throw a useful error if HTML error page returned
+      async function fetchJson(url) {
+        const res = await fetchNoCache(url);
+        const text = await res.text();
+        try {
+          return JSON.parse(text);
+        } catch (e) {
+          throw new Error(`Invalid JSON from ${url}: ${text.slice(0, 120)}`);
+        }
+      }
+
       async function loadData() {
         try {
-          const cacheBuster = `?v=${Date.now()}`;
-
           const [nat, a1, a2, partners] = await Promise.all([
-            fetch(`data/national_report.json${cacheBuster}`, { cache: 'no-store' }).then(r => r.json()),
-            fetch(`data/admin1_report.json${cacheBuster}`, { cache: 'no-store' }).then(r => r.json()),
-            fetch(`data/admin2_report.json${cacheBuster}`, { cache: 'no-store' }).then(r => r.json()),
-            fetch(`data/partners.json${cacheBuster}`, { cache: 'no-store' }).then(r => r.json()).catch(() => null)
+            fetchJson('data/national_report.json'),
+            fetchJson('data/admin1_report.json'),
+            fetchJson('data/admin2_report.json'),
+            fetchJson('data/partners.json').catch(() => null)
           ]);
           nationalData = nat;
           admin1Data = a1;
@@ -811,7 +842,23 @@
         });
       }
 
+      // ------------------------------------------------------------------
+      // Service worker: make sure /data/*.json never gets served from cache
+      // ------------------------------------------------------------------
+      function registerServiceWorker() {
+        if (!('serviceWorker' in navigator)) return;
+        // Only register on http(s) - GitHub Pages is https, so fine
+        if (location.protocol !== 'https:' && location.hostname !== 'localhost') return;
+        navigator.serviceWorker.register('sw.js', { scope: './' })
+          .then(reg => {
+            // Check for SW updates on every load so cache fixes propagate
+            reg.update().catch(() => {});
+          })
+          .catch(() => { /* silent - SW is optional */ });
+      }
+
       async function init() {
+        registerServiceWorker();
         const ok = await loadData();
         if (!ok) {
           groupCards.innerHTML = '<div style="padding:1rem;color:#b91c1c;">Failed to load data</div>';
