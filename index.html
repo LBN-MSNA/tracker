@@ -463,11 +463,13 @@
 
       async function loadData() {
         try {
+          const cacheBuster = `?v=${Date.now()}`;
+
           const [nat, a1, a2, partners] = await Promise.all([
-            fetch('data/national_report.json').then(r => r.json()),
-            fetch('data/admin1_report.json').then(r => r.json()),
-            fetch('data/admin2_report.json').then(r => r.json()),
-            fetch('data/partners.json').then(r => r.json()).catch(() => null)
+            fetch(`data/national_report.json${cacheBuster}`, { cache: 'no-store' }).then(r => r.json()),
+            fetch(`data/admin1_report.json${cacheBuster}`, { cache: 'no-store' }).then(r => r.json()),
+            fetch(`data/admin2_report.json${cacheBuster}`, { cache: 'no-store' }).then(r => r.json()),
+            fetch(`data/partners.json${cacheBuster}`, { cache: 'no-store' }).then(r => r.json()).catch(() => null)
           ]);
           nationalData = nat;
           admin1Data = a1;

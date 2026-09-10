@@ -315,7 +315,9 @@
       const navUpdated = document.getElementById('navLastUpdated');
       async function loadUpdateDate() {
         try {
-          const response = await fetch('data/partners.json');
+          const response = await fetch(`data/partners.json?v=${Date.now()}`, {
+            cache: 'no-store'
+          });
           if (response.ok) {
             const data = await response.json();
             if (data.updated && navUpdated) {
@@ -596,12 +598,16 @@
         try {
           let data;
           if (view === 'district') {
-            const resp = await fetch('data/survey_per_district.json');
+            const resp = await fetch(`data/survey_per_district.json?v=${Date.now()}`, {
+              cache: 'no-store'
+            });
             if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
             data = await resp.json();
             renderDistrictTable(data);
           } else {
-            const resp = await fetch('data/survey_per_camp.json');
+            const resp = await fetch(`data/survey_per_camp.json?v=${Date.now()}`, {
+              cache: 'no-store'
+            });
             if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
             data = await resp.json();
             renderCampTable(data);

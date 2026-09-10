@@ -68,11 +68,53 @@
       margin-bottom: 1.2rem;
       gap: 0.8rem;
     }
+    .header-left {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
     .header-section h2 {
       font-size: 1.4rem;
       font-weight: 600;
       letter-spacing: -0.3px;
       color: #58585A;
+    }
+    .org-filter {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      padding-top: 5px;
+    }
+    .org-filter label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #58585A;
+      opacity: 0.8;
+    }
+    /* dropdown without rounded corners */
+    .org-select {
+      background: white;
+      border: 1px solid #d0d7e2;
+      padding: 0.45rem 1.8rem 0.45rem 0.8rem;
+      font-size: 0.8rem;
+      border-radius: 0;          /* ⬅️ no rounded corners */
+      color: #58585A;
+      font-weight: 500;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2358585A' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.6rem center;
+      background-size: 10px;
+      min-width: 130px;
+    }
+    .org-select:focus {
+      outline: none;
+      border-color: #EE5859;
     }
     .search-wrapper {
       display: flex;
@@ -209,6 +251,8 @@
       table { font-size: 0.75rem; }
       th, td { padding: 0.5rem 0.4rem; }
       .header-section { flex-direction: column; align-items: stretch; }
+      .header-left { flex-direction: column; align-items: stretch; }
+      .org-filter { justify-content: flex-start; }
       .search-wrapper { justify-content: center; }
       .search-input { width: 100%; }
       .btn-download { margin-left: 0; }
@@ -232,7 +276,21 @@
 
   <div class="main-content">
     <div class="header-section">
-      <h2 id="tableTitle">Enumerator summary</h2>
+      <div class="header-left">
+        <h2 id="tableTitle">Enumerator summary</h2>
+        <!-- Organization dropdown – no rounded corners -->
+        <div class="org-filter">
+          <label for="orgSelect">Organization:</label>
+          <select id="orgSelect" class="org-select">
+            <option value="ALL" selected>ALL</option>
+            <option value="IOM">IOM</option>
+            <option value="REACH">REACH</option>
+            <option value="NABAA">NABAA</option>
+            <option value="SHIELD">SHIELD</option>
+            <option value="LOST">LOST</option>
+          </select>
+        </div>
+      </div>
       <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
         <input type="text" id="searchInput" class="search-input" placeholder="Search enumerator ID..." autocomplete="off">
         <button class="btn-download" id="downloadCsvBtn" onclick="downloadCSV()">
@@ -261,7 +319,7 @@
       const navUpdated = document.getElementById('navLastUpdated');
       async function loadUpdateDate() {
         try {
-          const response = await fetch('data/partners.json');
+          const response = await fetch(`data/partners.json?v=${Date.now()}`, { cache: 'no-store' });
           if (response.ok) {
             const data = await response.json();
             if (data.updated && navUpdated) {
@@ -289,12 +347,13 @@
       const errorDiv = document.getElementById('errorMessage');
       const tableContainer = document.getElementById('tableContainer');
       const searchInput = document.getElementById('searchInput');
+      const orgSelect = document.getElementById('orgSelect');
 
       let allData = [];
       let filteredData = [];
       let currentSort = { column: null, direction: 'asc' };
 
-      // ---- column definitions (updated for new data structure) ----
+      // ---- column definitions ----
       const columns = [
         { key: 'enum_id', label: 'Enumerator ID', sortable: true, numeric: false },
         { key: 'survey', label: 'Surveys', sortable: true, numeric: true },
@@ -402,16 +461,43 @@
         });
       }
 
-      // ---- search filter ----
-      function applySearchFilter() {
+      // ---- organization filter logic ----
+      function getOrgFromEnumId(enumId) {
+        if (!enumId) return null;
+        const id = String(enumId).trim().toUpperCase();
+        if (id.startsWith('IOM')) return 'IOM';
+        if (id.startsWith('RCH')) return 'REACH';
+        if (id.startsWith('SHL')) return 'SHIELD';
+        if (id.startsWith('LST')) return 'LOST';
+        if (id.startsWith('NBA')) return 'NABAA';
+        return null; // unknown / no match
+      }
+
+      // ---- apply both search and org filter ----
+      function applyFilters() {
         const query = searchInput.value.trim().toLowerCase();
+        const selectedOrg = orgSelect.value; // 'ALL', 'IOM', etc.
+
+        // start with all data, then apply org filter
+        let data = allData;
+
+        if (selectedOrg !== 'ALL') {
+          data = data.filter(row => {
+            const org = getOrgFromEnumId(row.enum_id);
+            return org === selectedOrg;
+          });
+        }
+
+        // apply search filter
         if (!query) {
-          filteredData = [...allData];
+          filteredData = [...data];
         } else {
-          filteredData = allData.filter(row => {
+          filteredData = data.filter(row => {
             return (row.enum_id || '').toLowerCase().includes(query);
           });
         }
+
+        // re-apply current sort if any
         if (currentSort.column) {
           const numeric = columns.find(c => c.key === currentSort.column)?.numeric || false;
           sortFilteredData(numeric);
@@ -426,12 +512,13 @@
         tableContainer.style.display = 'none';
 
         try {
-          const resp = await fetch('data/enum_summary.json');
+          const resp = await fetch(`data/enum_summary.json?v=${Date.now()}`, { cache: 'no-store' });
           if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
           const data = await resp.json();
           if (!Array.isArray(data)) throw new Error('Invalid data format');
           
           allData = data;
+          // initial filter (org = ALL, search empty)
           filteredData = [...allData];
           currentSort = { column: null, direction: 'asc' };
           renderTable();
@@ -486,7 +573,8 @@
       };
 
       // ---- event listeners ----
-      searchInput.addEventListener('input', applySearchFilter);
+      searchInput.addEventListener('input', applyFilters);
+      orgSelect.addEventListener('change', applyFilters);
 
       // initial load
       loadData();
