@@ -1,3 +1,5 @@
+Here is the updated HTML code for the MSNA 2026 Lebanon Enumerator Summary report. It now includes conditional highlighting for the table values based on your specified rules.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -242,6 +244,17 @@
       border-color: #EE5859;
       background: #fdf7f7;
     }
+    /* ---- conditional highlight ---- */
+    .highlight-warning {
+      display: inline-block;
+      background: #fff0e0;            /* light orange background */
+      border-radius: 10%;
+      padding: 0.2rem 0.6rem;
+      color: #b22222;                  /* dark red text */
+      font-weight: 700;
+      line-height: 1.2;
+  
+    }
     @media (max-width: 768px) {
       .navbar { flex-direction: column; align-items: stretch; padding: 0.5rem 0.8rem; }
       .navbar-left { flex-direction: column; align-items: center; text-align: center; }
@@ -256,6 +269,7 @@
       .search-wrapper { justify-content: center; }
       .search-input { width: 100%; }
       .btn-download { margin-left: 0; }
+      .highlight-warning { padding: 0.1rem 0.4rem; border-width: 1.5px; }
     }
   </style>
 </head>
@@ -283,8 +297,8 @@
           <label for="orgSelect">Organization:</label>
           <select id="orgSelect" class="org-select">
             <option value="ALL" selected>ALL</option>
-            <option value="IOM">IOM</option>
             <option value="REACH">REACH</option>
+            <option value="IOM">IOM</option>
             <option value="NABAA">NABAA</option>
             <option value="SHIELD">SHIELD</option>
             <option value="LOST">LOST</option>
@@ -357,28 +371,77 @@
       const columns = [
         { key: 'enum_id', label: 'Enumerator ID', sortable: true, numeric: false },
         { key: 'survey', label: 'Surveys', sortable: true, numeric: true },
-        { key: 'clogs', label: 'Logical logs', sortable: true, numeric: true },
+        { key: 'clogs', label: 'Avg Logical logs', sortable: true, numeric: true },
         { key: 'no_consent', label: 'No consent', sortable: true, numeric: true },
         { key: 'hh_size_mean', label: 'Avg HH size', sortable: true, numeric: true },
         { key: 'count_999_mean', label: 'Avg 999', sortable: true, numeric: true },
         { key: 'count_dnk_mean', label: 'Avg DNK', sortable: true, numeric: true },
         { key: 'count_pnta_mean', label: 'Avg PNTA', sortable: true, numeric: true },
-        { key: 'roster_duration_prop', label: 'Roster duration', sortable: true, numeric: true },
-        { key: 'audit_edit_count', label: 'Audit edits', sortable: true, numeric: true },
-        { key: 'interview_duration_mean', label: 'Interview duration', sortable: true, numeric: true },
-        { key: 'fsl_fcs_score', label: 'FCS score', sortable: true, numeric: true }
+        { key: 'roster_duration_prop', label: 'Avg Roster duration', sortable: true, numeric: true },
+        { key: 'audit_edit_count', label: 'Avg Audit edits', sortable: true, numeric: true },
+        { key: 'interview_duration_mean', label: 'Avg Interview duration', sortable: true, numeric: true },
+        { key: 'fsl_fcs_score', label: 'Avg FCS score', sortable: true, numeric: true }
       ];
 
+      // ---- helper: conditional highlight rules ----
+      function getHighlightClass(columnKey, value, enumId) {
+        // if value is null/undefined, no highlight
+        if (value === null || value === undefined) return '';
+
+        const num = typeof value === 'number' ? value : parseFloat(value);
+        if (isNaN(num)) return ''; // not a number, skip
+
+        // check if enumId starts with IOM (for hh_size rule)
+        const isIOM = enumId && String(enumId).trim().toUpperCase().startsWith('IOM');
+
+        switch (columnKey) {
+          case 'clogs':            // logical logs > 7
+            return num > 7 ? 'highlight-warning' : '';
+          case 'no_consent':       // no consent > 7
+            return num > 7 ? 'highlight-warning' : '';
+          case 'hh_size_mean':     // avg HH size < 2 (exclude IOM)
+            return (!isIOM && num < 2) ? 'highlight-warning' : '';
+          case 'count_999_mean':   // avg 999 > 7
+            return num > 7 ? 'highlight-warning' : '';
+          case 'count_dnk_mean':   // avg DNK > 7
+            return num > 7 ? 'highlight-warning' : '';
+          case 'count_pnta_mean':  // avg PNTA > 7
+            return num > 7 ? 'highlight-warning' : '';
+          case 'roster_duration_prop': // roster duration < 50
+            return num < 50 ? 'highlight-warning' : '';
+          case 'audit_edit_count': // audit edits > 15
+            return num > 15 ? 'highlight-warning' : '';
+          case 'interview_duration_mean': // <20 or >180
+            return (num < 20 || num > 120) ? 'highlight-warning' : '';
+          case 'fsl_fcs_score':    // FCS <35 or >75
+            return (num < 35 || num > 70) ? 'highlight-warning' : '';
+          default:
+            return '';
+        }
+      }
+
       // ---- utility ----
-      function formatCell(value) {
+      function formatCell(value, columnKey, enumId) {
         if (value === null || value === undefined) {
           return '<span class="null-value">null</span>';
         }
+        let displayValue;
         if (typeof value === 'number') {
-          if (Number.isInteger(value)) return value.toString();
-          return value.toFixed(2);
+          if (Number.isInteger(value)) {
+            displayValue = value.toString();
+          } else {
+            displayValue = value.toFixed(2);
+          }
+        } else {
+          displayValue = value;
         }
-        return value;
+
+        // apply conditional highlight (if applicable)
+        const highlightClass = getHighlightClass(columnKey, value, enumId);
+        if (highlightClass) {
+          return `<span class="${highlightClass}">${displayValue}</span>`;
+        }
+        return displayValue;
       }
 
       // ---- render table based on filteredData and currentSort ----
@@ -402,11 +465,12 @@
         filteredData.forEach(row => {
           rowsHtml += '<tr>';
           columns.forEach(col => {
-            let val = row[col.key];
+            const val = row[col.key];
+            const enumId = row.enum_id;
             if (col.key === 'enum_id') {
-              rowsHtml += `<td><span class="enum-id">${formatCell(val)}</span></td>`;
+              rowsHtml += `<td><span class="enum-id">${formatCell(val, col.key, enumId)}</span></td>`;
             } else {
-              rowsHtml += `<td>${formatCell(val)}</td>`;
+              rowsHtml += `<td>${formatCell(val, col.key, enumId)}</td>`;
             }
           });
           rowsHtml += '</tr>';
@@ -582,3 +646,4 @@
   </script>
 </body>
 </html>
+```
