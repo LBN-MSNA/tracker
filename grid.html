@@ -223,12 +223,21 @@
       transition: width 0.3s ease;
       background: #EE5859;
     }
+    /* New class for no-target progress bars */
+    .progress-bar-fill.no-target {
+      background: #b0b8c4;
+      width: 100% !important;
+    }
     .progress-percentage {
       font-size: 0.75rem;
       font-weight: 400;
       min-width: 35px;
       text-align: right;
       color: #58585A;
+    }
+    /* Hide percentage when no target */
+    .progress-percentage.no-target {
+      visibility: hidden;
     }
     .vertical-divider {
       border-left: 2px solid #d0d7e2;
@@ -357,6 +366,23 @@
         return target > 0 ? Math.round((surveyed / target) * 100) : 0;
       }
 
+      // Helper to build progress cell HTML with no-target handling
+      function buildProgressCell(progress, target) {
+        const hasTarget = target > 0;
+        const fillClass = hasTarget ? '' : 'no-target';
+        const pctClass = hasTarget ? '' : 'no-target';
+        const width = hasTarget ? Math.min(progress, 100) : 100;
+        const pctText = hasTarget ? progress + '%' : '0%';
+        return `
+          <div class="progress-cell">
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill ${fillClass}" style="width: ${width}%;"></div>
+            </div>
+            <span class="progress-percentage ${pctClass}">${pctText}</span>
+          </div>
+        `;
+      }
+
       // ---- render functions (dynamic columns) ----
       function renderDistrictTable(data) {
         if (!Array.isArray(data) || data.length === 0) {
@@ -408,27 +434,13 @@
             <td class="surveyed-positive">${lebanese_surveyed}</td>
             <td class="accepted-neutral">${lebanese_accepted}</td>
             <td class="${lebRemainClass}">${lebanese_remaining}</td>
-            <td>
-              <div class="progress-cell">
-                <div class="progress-bar-container">
-                  <div class="progress-bar-fill" style="width: ${Math.min(lebanese_progress, 100)}%;"></div>
-                </div>
-                <span class="progress-percentage">${lebanese_progress}%</span>
-              </div>
-            </td>
+            <td>${buildProgressCell(lebanese_progress, lebanese_target)}</td>
             <td class="vertical-divider"></td>
             <td>${migrant_target}</td>
             <td class="surveyed-positive">${migrant_surveyed}</td>
             <td class="accepted-neutral">${migrant_accepted}</td>
             <td class="${migRemainClass}">${migrant_remaining}</td>
-            <td>
-              <div class="progress-cell">
-                <div class="progress-bar-container">
-                  <div class="progress-bar-fill" style="width: ${Math.min(migrant_progress, 100)}%;"></div>
-                </div>
-                <span class="progress-percentage">${migrant_progress}%</span>
-              </div>
-            </td>
+            <td>${buildProgressCell(migrant_progress, migrant_target)}</td>
           `;
           tableBody.appendChild(tr);
         });
@@ -484,27 +496,13 @@
             <td class="surveyed-positive">${prl_surveyed}</td>
             <td class="accepted-neutral">${prl_accepted}</td>
             <td class="${prlRemainClass}">${prl_remaining}</td>
-            <td>
-              <div class="progress-cell">
-                <div class="progress-bar-container">
-                  <div class="progress-bar-fill" style="width: ${Math.min(prl_progress, 100)}%;"></div>
-                </div>
-                <span class="progress-percentage">${prl_progress}%</span>
-              </div>
-            </td>
+            <td>${buildProgressCell(prl_progress, prl_target)}</td>
             <td class="vertical-divider"></td>
             <td>${prs_target}</td>
             <td class="surveyed-positive">${prs_surveyed}</td>
             <td class="accepted-neutral">${prs_accepted}</td>
             <td class="${prsRemainClass}">${prs_remaining}</td>
-            <td>
-              <div class="progress-cell">
-                <div class="progress-bar-container">
-                  <div class="progress-bar-fill" style="width: ${Math.min(prs_progress, 100)}%;"></div>
-                </div>
-                <span class="progress-percentage">${prs_progress}%</span>
-              </div>
-            </td>
+            <td>${buildProgressCell(prs_progress, prs_target)}</td>
           `;
           tableBody.appendChild(tr);
         });
