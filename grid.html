@@ -362,8 +362,8 @@
       let currentSort = { column: null, direction: 'asc' };
 
       // ---- utility ----
-      function calculateProgress(surveyed, target) {
-        return target > 0 ? Math.round((surveyed / target) * 100) : 0;
+      function calculateProgress(accepted, target) {
+        return target > 0 ? Math.round((accepted / target) * 100) : 0;
       }
 
       // Helper to build progress cell HTML with no-target handling
@@ -421,8 +421,8 @@
           const migrant_accepted = Number(row.migrant_accepted) || 0;
           const migrant_remaining = Number(row.migrant_remaining) || 0;
           
-          const lebanese_progress = calculateProgress(lebanese_surveyed, lebanese_target);
-          const migrant_progress = calculateProgress(migrant_surveyed, migrant_target);
+          const lebanese_progress = calculateProgress(lebanese_accepted, lebanese_target);
+          const migrant_progress = calculateProgress(migrant_accepted, migrant_target);
           
           const lebRemainClass = lebanese_remaining < 0 ? 'remaining-negative' : '';
           const migRemainClass = migrant_remaining < 0 ? 'remaining-negative' : '';
@@ -483,8 +483,8 @@
           const prs_accepted = Number(row.prs_accepted) || 0;
           const prs_remaining = Number(row.prs_remaining) || 0;
           
-          const prl_progress = calculateProgress(prl_surveyed, prl_target);
-          const prs_progress = calculateProgress(prs_surveyed, prs_target);
+          const prl_progress = calculateProgress(prl_accepted, prl_target);
+          const prs_progress = calculateProgress(prs_accepted, prs_target);
           
           const prlRemainClass = prl_remaining < 0 ? 'remaining-negative' : '';
           const prsRemainClass = prs_remaining < 0 ? 'remaining-negative' : '';
@@ -553,17 +553,17 @@
           } else if (column.endsWith('_progress')) {
             // compute progress for sort
             if (column.startsWith('lebanese')) {
-              aVal = calculateProgress(a.lebanese_surveyed || 0, a.lebanese_target || 0);
-              bVal = calculateProgress(b.lebanese_surveyed || 0, b.lebanese_target || 0);
+              aVal = calculateProgress(a.lebanese_accepted || 0, a.lebanese_target || 0);
+              bVal = calculateProgress(b.lebanese_accepted || 0, b.lebanese_target || 0);
             } else if (column.startsWith('migrant')) {
-              aVal = calculateProgress(a.migrant_surveyed || 0, a.migrant_target || 0);
-              bVal = calculateProgress(b.migrant_surveyed || 0, b.migrant_target || 0);
+              aVal = calculateProgress(a.migrant_accepted || 0, a.migrant_target || 0);
+              bVal = calculateProgress(b.migrant_accepted || 0, b.migrant_target || 0);
             } else if (column.startsWith('prl')) {
-              aVal = calculateProgress(a.prl_surveyed || 0, a.prl_target || 0);
-              bVal = calculateProgress(b.prl_surveyed || 0, b.prl_target || 0);
+              aVal = calculateProgress(a.prl_accepted || 0, a.prl_target || 0);
+              bVal = calculateProgress(b.prl_accepted || 0, b.prl_target || 0);
             } else if (column.startsWith('prs')) {
-              aVal = calculateProgress(a.prs_surveyed || 0, a.prs_target || 0);
-              bVal = calculateProgress(b.prs_surveyed || 0, b.prs_target || 0);
+              aVal = calculateProgress(a.prs_accepted || 0, a.prs_target || 0);
+              bVal = calculateProgress(b.prs_accepted || 0, b.prs_target || 0);
             } else {
               aVal = 0; bVal = 0;
             }
@@ -662,12 +662,12 @@
             row.lebanese_surveyed || 0,
             row.lebanese_accepted || 0,
             row.lebanese_remaining || 0,
-            calculateProgress(row.lebanese_surveyed || 0, row.lebanese_target || 0) + '%',
+            calculateProgress(row.lebanese_accepted || 0, row.lebanese_target || 0) + '%',
             row.migrant_target || 0,
             row.migrant_surveyed || 0,
             row.migrant_accepted || 0,
             row.migrant_remaining || 0,
-            calculateProgress(row.migrant_surveyed || 0, row.migrant_target || 0) + '%'
+            calculateProgress(row.migrant_accepted || 0, row.migrant_target || 0) + '%'
           ]);
         } else {
           headers = [
@@ -680,12 +680,12 @@
             row.prl_surveyed || 0,
             row.prl_accepted || 0,
             row.prl_remaining || 0,
-            calculateProgress(row.prl_surveyed || 0, row.prl_target || 0) + '%',
+            calculateProgress(row.prl_accepted || 0, row.prl_target || 0) + '%',
             row.prs_target || 0,
             row.prs_surveyed || 0,
             row.prs_accepted || 0,
             row.prs_remaining || 0,
-            calculateProgress(row.prs_surveyed || 0, row.prs_target || 0) + '%'
+            calculateProgress(row.prs_accepted || 0, row.prs_target || 0) + '%'
           ]);
         }
         
