@@ -58,6 +58,7 @@
       max-width: 1600px;
       margin: 0 auto;
       padding: 1.8rem 1.5rem;
+      padding-top: 1rem;
       display: flex;
       flex-direction: column;
     }
@@ -287,7 +288,10 @@
 
   <div class="main-content">
     <div class="table-header">
-      <h2 id="tableTitle">Survey progress by district</h2>
+      <h2 id="tableTitle">Survey progress by district </h2>
+      <p style="display: inline; font-size: 12px; color: #777; margin-left: 10px;">
+        Negative remaining indicates that the target has been exceeded.
+      </p>
       <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
         <div class="view-switch" role="tablist" aria-label="Data view switch">
           <button class="switch-btn active" id="districtViewBtn" data-view="district" role="tab" aria-selected="true">District</button>
