@@ -1,25 +1,30 @@
 {
-  "updated": "10-09-2026",
+  "updated": "12-09-2026",
   "organizations": [
     {
-      "organization": "IOM",
-      "surveyed": 716
-    },
-    {
-      "organization": "LOST",
-      "surveyed": 660
-    },
-    {
-      "organization": "NABAA",
-      "surveyed": 1723
-    },
-    {
       "organization": "REACH",
-      "surveyed": 644
+      "accepted": 1012,
+      "deleted": 98
+    },
+    {
+      "organization": "IOM",
+      "accepted": 993,
+      "deleted": 0
     },
     {
       "organization": "SHIELD",
-      "surveyed": 1035
+      "accepted": 1244,
+      "deleted": 2
+    },
+    {
+      "organization": "LOST",
+      "accepted": 717,
+      "deleted": 46
+    },
+    {
+      "organization": "NABAA",
+      "accepted": 1889,
+      "deleted": 20
     }
   ]
 }

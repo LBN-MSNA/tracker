@@ -1,32 +1,32 @@
 {
   "all_population": {
     "target": 9157,
-    "surveyed": 4895,
-    "accepted": 4778,
-    "remaining": 4379
+    "surveyed": 6021,
+    "accepted": 5855,
+    "remaining": 3302
   },
   "lebanese": {
     "target": 5607,
-    "surveyed": 2452,
-    "accepted": 2340,
-    "remaining": 3267
+    "surveyed": 3120,
+    "accepted": 2974,
+    "remaining": 2633
   },
   "prl": {
     "target": 1236,
-    "surveyed": 1155,
-    "accepted": 1150,
-    "remaining": 86
+    "surveyed": 1218,
+    "accepted": 1198,
+    "remaining": 38
   },
   "prs": {
     "target": 965,
-    "surveyed": 572,
-    "accepted": 572,
-    "remaining": 393
+    "surveyed": 690,
+    "accepted": 690,
+    "remaining": 275
   },
   "migrant": {
     "target": 1349,
-    "surveyed": 716,
-    "accepted": 716,
-    "remaining": 633
+    "surveyed": 993,
+    "accepted": 993,
+    "remaining": 356
   }
 }

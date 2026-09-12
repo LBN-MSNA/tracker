@@ -1,3 +1,5 @@
+Here is the updated HTML code for the partner card section, reflecting your new `partners.json` structure. I've kept all other CSS and UI elements exactly as they were.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -176,9 +178,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.75rem;
-      border-bottom: 1px dashed #e2e8f0;
-      padding-bottom: 0.25rem;
+      font-size: 0.7rem;
+      padding-bottom: 0.1rem;
     }
     .partner-name { font-weight: 600; color: #2c3e50; }
     .partner-surveyed { font-weight: 700; color: #1a2d42; padding: 0.15rem 0.5rem; }
@@ -598,13 +599,22 @@
         if (partnersData && partnersData.organizations && partnersData.organizations.length) {
           let partnerHtml = `
             <div class="partner-card">
-              <div class="partner-header"><span>Organizations</span><span style="font-weight:400; font-size:0.65rem; opacity:0.8;">Surveyed</span></div>
+              <div class="partner-header">
+                <span>Organization</span>
+                <span style="display: flex; gap: 1.2rem; font-weight: 700; font-size: 0.65rem; opacity: 0.8;">
+                  <span style="color: #b91c1c;">Deleted</span>
+                  <span>Accepted</span>
+                </span>
+              </div>
               <div class="partner-list">`;
           partnersData.organizations.forEach(org => {
             partnerHtml += `
               <div class="partner-row">
                 <span class="partner-name">${org.organization}</span>
-                <span class="partner-surveyed">${fmt(org.surveyed)}</span>
+                <span style="display: flex; gap: 1.7rem; align-items: center;">
+                  <span style="font-weight: 700; color: #b91c1c; min-width: 2.5rem; text-align: right;">${fmt(org.deleted)}</span>
+                  <span class="partner-surveyed" style="min-width: 2.5rem; text-align: right;">${fmt(org.accepted)}</span>
+                </span>
               </div>`;
           });
           partnerHtml += `</div></div>`;
@@ -875,3 +885,4 @@
   </script>
 </body>
 </html>
+```
