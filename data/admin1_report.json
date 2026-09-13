@@ -3,9 +3,9 @@
     "label": "Beirut",
     "all_population": {
       "target": 627,
-      "surveyed": 490,
-      "accepted": 446,
-      "remaining": 181
+      "surveyed": 491,
+      "accepted": 447,
+      "remaining": 180
     },
     "lebanese": {
       "target": 216,
@@ -15,8 +15,8 @@
     },
     "prl": {
       "target": 90,
-      "surveyed": 95,
-      "accepted": 93,
+      "surveyed": 96,
+      "accepted": 94,
       "remaining": 0
     },
     "prs": {
@@ -69,48 +69,48 @@
     "label": "Mount Lebanon",
     "all_population": {
       "target": 2265,
-      "surveyed": 992,
-      "accepted": 930,
-      "remaining": 1335
+      "surveyed": 1100,
+      "accepted": 1029,
+      "remaining": 1236
     },
     "lebanese": {
       "target": 1296,
-      "surveyed": 493,
-      "accepted": 432,
-      "remaining": 864
+      "surveyed": 563,
+      "accepted": 493,
+      "remaining": 803
     },
     "prl": {
       "target": 305,
-      "surveyed": 272,
-      "accepted": 271,
-      "remaining": 34
+      "surveyed": 287,
+      "accepted": 286,
+      "remaining": 19
     },
     "prs": {
       "target": 190,
-      "surveyed": 92,
-      "accepted": 92,
-      "remaining": 98
+      "surveyed": 104,
+      "accepted": 104,
+      "remaining": 86
     },
     "migrant": {
       "target": 474,
-      "surveyed": 135,
-      "accepted": 135,
-      "remaining": 339
+      "surveyed": 146,
+      "accepted": 146,
+      "remaining": 328
     }
   },
   "LB4": {
     "label": "El Nabatieh",
     "all_population": {
       "target": 929,
-      "surveyed": 779,
-      "accepted": 779,
-      "remaining": 150
+      "surveyed": 817,
+      "accepted": 817,
+      "remaining": 112
     },
     "lebanese": {
       "target": 859,
-      "surveyed": 708,
-      "accepted": 708,
-      "remaining": 151
+      "surveyed": 746,
+      "accepted": 746,
+      "remaining": 113
     },
     "prl": {
       "target": 0,
@@ -135,27 +135,27 @@
     "label": "North",
     "all_population": {
       "target": 1635,
-      "surveyed": 746,
-      "accepted": 733,
-      "remaining": 902
+      "surveyed": 819,
+      "accepted": 804,
+      "remaining": 831
     },
     "lebanese": {
       "target": 1295,
-      "surveyed": 436,
-      "accepted": 423,
-      "remaining": 872
+      "surveyed": 495,
+      "accepted": 480,
+      "remaining": 815
     },
     "prl": {
       "target": 106,
-      "surveyed": 95,
-      "accepted": 95,
-      "remaining": 11
+      "surveyed": 102,
+      "accepted": 102,
+      "remaining": 4
     },
     "prs": {
       "target": 99,
-      "surveyed": 83,
-      "accepted": 83,
-      "remaining": 16
+      "surveyed": 90,
+      "accepted": 90,
+      "remaining": 9
     },
     "migrant": {
       "target": 135,
@@ -168,15 +168,15 @@
     "label": "South",
     "all_population": {
       "target": 1815,
-      "surveyed": 1628,
-      "accepted": 1610,
-      "remaining": 205
+      "surveyed": 1641,
+      "accepted": 1623,
+      "remaining": 192
     },
     "lebanese": {
       "target": 647,
-      "surveyed": 538,
-      "accepted": 536,
-      "remaining": 111
+      "surveyed": 550,
+      "accepted": 548,
+      "remaining": 99
     },
     "prl": {
       "target": 527,
@@ -192,36 +192,36 @@
     },
     "migrant": {
       "target": 201,
-      "surveyed": 190,
-      "accepted": 190,
-      "remaining": 11
+      "surveyed": 191,
+      "accepted": 191,
+      "remaining": 10
     }
   },
   "LB7": {
     "label": "Akkar",
     "all_population": {
       "target": 471,
-      "surveyed": 409,
-      "accepted": 408,
-      "remaining": 63
+      "surveyed": 430,
+      "accepted": 429,
+      "remaining": 42
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 173,
-      "accepted": 173,
-      "remaining": 43
+      "surveyed": 187,
+      "accepted": 187,
+      "remaining": 29
     },
     "prl": {
       "target": 106,
-      "surveyed": 108,
-      "accepted": 107,
+      "surveyed": 109,
+      "accepted": 108,
       "remaining": 0
     },
     "prs": {
       "target": 98,
-      "surveyed": 77,
-      "accepted": 77,
-      "remaining": 21
+      "surveyed": 83,
+      "accepted": 83,
+      "remaining": 15
     },
     "migrant": {
       "target": 51,
@@ -234,15 +234,15 @@
     "label": "Baalbek-El Hermel",
     "all_population": {
       "target": 680,
-      "surveyed": 606,
-      "accepted": 590,
-      "remaining": 90
+      "surveyed": 621,
+      "accepted": 605,
+      "remaining": 75
     },
     "lebanese": {
       "target": 431,
-      "surveyed": 385,
-      "accepted": 369,
-      "remaining": 62
+      "surveyed": 400,
+      "accepted": 384,
+      "remaining": 47
     },
     "prl": {
       "target": 102,
