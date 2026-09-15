@@ -2,9 +2,9 @@
   {
     "camp": "Mar Elias Camp",
     "prl_target": 90,
-    "prl_surveyed": 97,
-    "prl_accepted": 95,
-    "prl_remaining": -5,
+    "prl_surveyed": 100,
+    "prl_accepted": 98,
+    "prl_remaining": -8,
     "prs_target": 51,
     "prs_surveyed": 25,
     "prs_accepted": 25,
@@ -24,24 +24,24 @@
   {
     "camp": "Burj Barajneh Camp",
     "prl_target": 106,
-    "prl_surveyed": 101,
-    "prl_accepted": 101,
-    "prl_remaining": 5,
+    "prl_surveyed": 108,
+    "prl_accepted": 108,
+    "prl_remaining": -2,
     "prs_target": 96,
-    "prs_surveyed": 28,
-    "prs_accepted": 28,
-    "prs_remaining": 68
+    "prs_surveyed": 30,
+    "prs_accepted": 30,
+    "prs_remaining": 66
   },
   {
     "camp": "Chatila Camp",
     "prl_target": 104,
-    "prl_surveyed": 103,
-    "prl_accepted": 103,
-    "prl_remaining": 1,
+    "prl_surveyed": 104,
+    "prl_accepted": 104,
+    "prl_remaining": 0,
     "prs_target": 94,
-    "prs_surveyed": 80,
-    "prs_accepted": 80,
-    "prs_remaining": 14
+    "prs_surveyed": 89,
+    "prs_accepted": 89,
+    "prs_remaining": 5
   },
   {
     "camp": "Dbayeh Camp",
@@ -61,9 +61,9 @@
     "prl_accepted": 108,
     "prl_remaining": -2,
     "prs_target": 98,
-    "prs_surveyed": 88,
-    "prs_accepted": 88,
-    "prs_remaining": 10
+    "prs_surveyed": 91,
+    "prs_accepted": 91,
+    "prs_remaining": 7
   },
   {
     "camp": "Beddawi Camp",
@@ -105,9 +105,9 @@
     "prl_accepted": 100,
     "prl_remaining": 6,
     "prs_target": 101,
-    "prs_surveyed": 93,
-    "prs_accepted": 93,
-    "prs_remaining": 8
+    "prs_surveyed": 101,
+    "prs_accepted": 101,
+    "prs_remaining": 0
   },
   {
     "camp": "Buss Camp",
