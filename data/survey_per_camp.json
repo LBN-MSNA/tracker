@@ -2,9 +2,9 @@
   {
     "camp": "Mar Elias Camp",
     "prl_target": 90,
-    "prl_surveyed": 106,
-    "prl_accepted": 95,
-    "prl_remaining": -5,
+    "prl_surveyed": 108,
+    "prl_accepted": 97,
+    "prl_remaining": -7,
     "prs_target": 51,
     "prs_surveyed": 25,
     "prs_accepted": 23,
@@ -13,13 +13,13 @@
   {
     "camp": "Wavel Camp",
     "prl_target": 102,
-    "prl_surveyed": 121,
-    "prl_accepted": 77,
-    "prl_remaining": 25,
+    "prl_surveyed": 136,
+    "prl_accepted": 92,
+    "prl_remaining": 10,
     "prs_target": 87,
     "prs_surveyed": 64,
-    "prs_accepted": 52,
-    "prs_remaining": 35
+    "prs_accepted": 47,
+    "prs_remaining": 40
   },
   {
     "camp": "Burj Barajneh Camp",
@@ -61,9 +61,9 @@
     "prl_accepted": 109,
     "prl_remaining": -3,
     "prs_target": 98,
-    "prs_surveyed": 98,
-    "prs_accepted": 98,
-    "prs_remaining": 0
+    "prs_surveyed": 100,
+    "prs_accepted": 100,
+    "prs_remaining": -2
   },
   {
     "camp": "Beddawi Camp",
@@ -72,16 +72,16 @@
     "prl_accepted": 107,
     "prl_remaining": -1,
     "prs_target": 99,
-    "prs_surveyed": 98,
-    "prs_accepted": 96,
-    "prs_remaining": 3
+    "prs_surveyed": 102,
+    "prs_accepted": 99,
+    "prs_remaining": 0
   },
   {
     "camp": "Ein El Hilweh Camp",
     "prl_target": 106,
     "prl_surveyed": 123,
-    "prl_accepted": 110,
-    "prl_remaining": -4,
+    "prl_accepted": 109,
+    "prl_remaining": -3,
     "prs_target": 103,
     "prs_surveyed": 121,
     "prs_accepted": 102,
@@ -90,24 +90,24 @@
   {
     "camp": "Mia Mia Camp",
     "prl_target": 104,
-    "prl_surveyed": 120,
-    "prl_accepted": 101,
-    "prl_remaining": 3,
+    "prl_surveyed": 124,
+    "prl_accepted": 103,
+    "prl_remaining": 1,
     "prs_target": 71,
-    "prs_surveyed": 50,
-    "prs_accepted": 32,
-    "prs_remaining": 39
+    "prs_surveyed": 60,
+    "prs_accepted": 42,
+    "prs_remaining": 29
   },
   {
     "camp": "Burj Shamali Camp",
     "prl_target": 106,
-    "prl_surveyed": 119,
-    "prl_accepted": 98,
-    "prl_remaining": 8,
+    "prl_surveyed": 121,
+    "prl_accepted": 100,
+    "prl_remaining": 6,
     "prs_target": 101,
-    "prs_surveyed": 102,
-    "prs_accepted": 101,
-    "prs_remaining": 0
+    "prs_surveyed": 103,
+    "prs_accepted": 100,
+    "prs_remaining": 1
   },
   {
     "camp": "Buss Camp",
