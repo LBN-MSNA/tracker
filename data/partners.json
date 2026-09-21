@@ -1,10 +1,10 @@
 {
-  "updated": "19-09-2026",
+  "updated": "21-09-2026",
   "organizations": [
     {
       "organization": "REACH",
-      "accepted": 2136,
-      "deleted": 201
+      "accepted": 2306,
+      "deleted": 213
     },
     {
       "organization": "IOM",
@@ -13,17 +13,17 @@
     },
     {
       "organization": "SHIELD",
-      "accepted": 1496,
-      "deleted": 19
+      "accepted": 1494,
+      "deleted": 21
     },
     {
       "organization": "LOST",
-      "accepted": 911,
-      "deleted": 110
+      "accepted": 909,
+      "deleted": 112
     },
     {
       "organization": "NABAA",
-      "accepted": 1993,
+      "accepted": 2005,
       "deleted": 202
     }
   ]

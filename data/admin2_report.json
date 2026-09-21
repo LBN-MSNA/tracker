@@ -3,15 +3,15 @@
     "label": "Beirut",
     "all_population": {
       "target": 627,
-      "surveyed": 624,
-      "accepted": 528,
-      "remaining": 99
+      "surveyed": 647,
+      "accepted": 548,
+      "remaining": 79
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 218,
-      "accepted": 136,
-      "remaining": 80
+      "surveyed": 241,
+      "accepted": 156,
+      "remaining": 60
     },
     "prl": {
       "target": 90,
@@ -36,21 +36,21 @@
     "label": "Baalbek",
     "all_population": {
       "target": 422,
-      "surveyed": 456,
-      "accepted": 376,
-      "remaining": 46
+      "surveyed": 465,
+      "accepted": 383,
+      "remaining": 39
     },
     "lebanese": {
       "target": 216,
       "surveyed": 239,
-      "accepted": 220,
+      "accepted": 218,
       "remaining": 0
     },
     "prl": {
       "target": 102,
-      "surveyed": 136,
-      "accepted": 92,
-      "remaining": 10
+      "surveyed": 145,
+      "accepted": 101,
+      "remaining": 1
     },
     "prs": {
       "target": 87,
@@ -201,15 +201,15 @@
     "label": "Aley",
     "all_population": {
       "target": 361,
-      "surveyed": 302,
-      "accepted": 294,
-      "remaining": 67
+      "surveyed": 309,
+      "accepted": 301,
+      "remaining": 60
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 156,
-      "accepted": 148,
-      "remaining": 68
+      "surveyed": 163,
+      "accepted": 155,
+      "remaining": 61
     },
     "prl": {
       "target": 0,
@@ -234,9 +234,9 @@
     "label": "Baabda",
     "all_population": {
       "target": 690,
-      "surveyed": 572,
-      "accepted": 542,
-      "remaining": 148
+      "surveyed": 573,
+      "accepted": 543,
+      "remaining": 147
     },
     "lebanese": {
       "target": 216,
@@ -246,8 +246,8 @@
     },
     "prl": {
       "target": 210,
-      "surveyed": 214,
-      "accepted": 213,
+      "surveyed": 215,
+      "accepted": 214,
       "remaining": 0
     },
     "prs": {
@@ -267,15 +267,15 @@
     "label": "Chouf",
     "all_population": {
       "target": 226,
-      "surveyed": 197,
-      "accepted": 183,
-      "remaining": 43
+      "surveyed": 213,
+      "accepted": 199,
+      "remaining": 27
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 187,
-      "accepted": 173,
-      "remaining": 43
+      "surveyed": 203,
+      "accepted": 189,
+      "remaining": 27
     },
     "prl": {
       "target": 0,
@@ -300,15 +300,15 @@
     "label": "Jbeil",
     "all_population": {
       "target": 256,
-      "surveyed": 233,
-      "accepted": 209,
-      "remaining": 47
+      "surveyed": 247,
+      "accepted": 220,
+      "remaining": 36
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 193,
-      "accepted": 170,
-      "remaining": 46
+      "surveyed": 207,
+      "accepted": 181,
+      "remaining": 35
     },
     "prl": {
       "target": 0,
@@ -333,15 +333,15 @@
     "label": "Kesrwane",
     "all_population": {
       "target": 236,
-      "surveyed": 224,
-      "accepted": 194,
-      "remaining": 42
+      "surveyed": 243,
+      "accepted": 210,
+      "remaining": 26
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 204,
-      "accepted": 174,
-      "remaining": 42
+      "surveyed": 223,
+      "accepted": 190,
+      "remaining": 26
     },
     "prl": {
       "target": 0,
@@ -366,15 +366,15 @@
     "label": "El Meten",
     "all_population": {
       "target": 496,
-      "surveyed": 439,
-      "accepted": 437,
-      "remaining": 59
+      "surveyed": 456,
+      "accepted": 454,
+      "remaining": 42
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 159,
-      "accepted": 159,
-      "remaining": 57
+      "surveyed": 176,
+      "accepted": 176,
+      "remaining": 40
     },
     "prl": {
       "target": 95,
@@ -433,14 +433,14 @@
     "all_population": {
       "target": 215,
       "surveyed": 222,
-      "accepted": 211,
-      "remaining": 4
+      "accepted": 209,
+      "remaining": 6
     },
     "lebanese": {
       "target": 215,
       "surveyed": 222,
-      "accepted": 211,
-      "remaining": 4
+      "accepted": 209,
+      "remaining": 6
     },
     "prl": {
       "target": 0,
@@ -564,15 +564,15 @@
     "label": "El Batroun",
     "all_population": {
       "target": 290,
-      "surveyed": 245,
-      "accepted": 239,
-      "remaining": 51
+      "surveyed": 259,
+      "accepted": 253,
+      "remaining": 37
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 171,
-      "accepted": 168,
-      "remaining": 48
+      "surveyed": 185,
+      "accepted": 182,
+      "remaining": 34
     },
     "prl": {
       "target": 0,
@@ -597,15 +597,15 @@
     "label": "Bcharre",
     "all_population": {
       "target": 225,
-      "surveyed": 184,
-      "accepted": 181,
-      "remaining": 44
+      "surveyed": 198,
+      "accepted": 195,
+      "remaining": 30
     },
     "lebanese": {
       "target": 215,
-      "surveyed": 174,
-      "accepted": 171,
-      "remaining": 44
+      "surveyed": 188,
+      "accepted": 185,
+      "remaining": 30
     },
     "prl": {
       "target": 0,
@@ -630,15 +630,15 @@
     "label": "El Koura",
     "all_population": {
       "target": 239,
-      "surveyed": 183,
-      "accepted": 176,
-      "remaining": 63
+      "surveyed": 189,
+      "accepted": 182,
+      "remaining": 57
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 161,
-      "accepted": 154,
-      "remaining": 62
+      "surveyed": 167,
+      "accepted": 160,
+      "remaining": 56
     },
     "prl": {
       "target": 0,
@@ -663,15 +663,15 @@
     "label": "El Minieh-Dennie",
     "all_population": {
       "target": 421,
-      "surveyed": 368,
-      "accepted": 353,
-      "remaining": 68
+      "surveyed": 392,
+      "accepted": 376,
+      "remaining": 45
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 151,
-      "accepted": 147,
-      "remaining": 69
+      "surveyed": 175,
+      "accepted": 170,
+      "remaining": 46
     },
     "prl": {
       "target": 106,
@@ -696,15 +696,15 @@
     "label": "Tripoli",
     "all_population": {
       "target": 226,
-      "surveyed": 192,
-      "accepted": 168,
-      "remaining": 58
+      "surveyed": 208,
+      "accepted": 183,
+      "remaining": 43
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 180,
-      "accepted": 156,
-      "remaining": 60
+      "surveyed": 196,
+      "accepted": 171,
+      "remaining": 45
     },
     "prl": {
       "target": 0,
@@ -729,15 +729,15 @@
     "label": "Zgharta",
     "all_population": {
       "target": 234,
-      "surveyed": 189,
-      "accepted": 185,
-      "remaining": 49
+      "surveyed": 201,
+      "accepted": 196,
+      "remaining": 38
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 170,
-      "accepted": 166,
-      "remaining": 50
+      "surveyed": 182,
+      "accepted": 177,
+      "remaining": 39
     },
     "prl": {
       "target": 0,
@@ -762,9 +762,9 @@
     "label": "Saida",
     "all_population": {
       "target": 685,
-      "surveyed": 729,
-      "accepted": 654,
-      "remaining": 31
+      "surveyed": 731,
+      "accepted": 656,
+      "remaining": 29
     },
     "lebanese": {
       "target": 216,
@@ -774,8 +774,8 @@
     },
     "prl": {
       "target": 210,
-      "surveyed": 247,
-      "accepted": 212,
+      "surveyed": 249,
+      "accepted": 214,
       "remaining": 0
     },
     "prs": {
