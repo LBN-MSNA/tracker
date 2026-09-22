@@ -1,20 +1,20 @@
 {
   "all_population": {
     "target": 9157,
-    "surveyed": 8835,
-    "accepted": 8272,
-    "remaining": 885
+    "surveyed": 9047,
+    "accepted": 8472,
+    "remaining": 685
   },
   "lebanese": {
     "target": 5607,
-    "surveyed": 5251,
-    "accepted": 4899,
-    "remaining": 708
+    "surveyed": 5459,
+    "accepted": 5095,
+    "remaining": 512
   },
   "prl": {
     "target": 1236,
-    "surveyed": 1397,
-    "accepted": 1258,
+    "surveyed": 1401,
+    "accepted": 1262,
     "remaining": 0
   },
   "prs": {

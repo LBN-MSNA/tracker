@@ -3,15 +3,15 @@
     "label": "Beirut",
     "all_population": {
       "target": 627,
-      "surveyed": 663,
-      "accepted": 564,
-      "remaining": 63
+      "surveyed": 682,
+      "accepted": 578,
+      "remaining": 49
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 255,
-      "accepted": 170,
-      "remaining": 46
+      "surveyed": 274,
+      "accepted": 184,
+      "remaining": 32
     },
     "prl": {
       "target": 90,
@@ -36,15 +36,15 @@
     "label": "Bekaa",
     "all_population": {
       "target": 735,
-      "surveyed": 534,
-      "accepted": 481,
-      "remaining": 254
+      "surveyed": 572,
+      "accepted": 518,
+      "remaining": 217
     },
     "lebanese": {
       "target": 647,
-      "surveyed": 445,
-      "accepted": 392,
-      "remaining": 255
+      "surveyed": 483,
+      "accepted": 429,
+      "remaining": 218
     },
     "prl": {
       "target": 0,
@@ -69,20 +69,20 @@
     "label": "Mount Lebanon",
     "all_population": {
       "target": 2265,
-      "surveyed": 2109,
-      "accepted": 1992,
-      "remaining": 273
+      "surveyed": 2177,
+      "accepted": 2058,
+      "remaining": 207
     },
     "lebanese": {
       "target": 1296,
-      "surveyed": 1200,
-      "accepted": 1087,
-      "remaining": 209
+      "surveyed": 1265,
+      "accepted": 1150,
+      "remaining": 146
     },
     "prl": {
       "target": 305,
-      "surveyed": 312,
-      "accepted": 309,
+      "surveyed": 315,
+      "accepted": 312,
       "remaining": 0
     },
     "prs": {
@@ -135,15 +135,15 @@
     "label": "North",
     "all_population": {
       "target": 1635,
-      "surveyed": 1527,
-      "accepted": 1464,
-      "remaining": 171
+      "surveyed": 1613,
+      "accepted": 1546,
+      "remaining": 89
     },
     "lebanese": {
       "target": 1295,
-      "surveyed": 1172,
-      "accepted": 1123,
-      "remaining": 172
+      "surveyed": 1258,
+      "accepted": 1205,
+      "remaining": 90
     },
     "prl": {
       "target": 106,
@@ -168,9 +168,9 @@
     "label": "South",
     "all_population": {
       "target": 1815,
-      "surveyed": 1853,
-      "accepted": 1749,
-      "remaining": 66
+      "surveyed": 1854,
+      "accepted": 1750,
+      "remaining": 65
     },
     "lebanese": {
       "target": 647,
@@ -180,8 +180,8 @@
     },
     "prl": {
       "target": 527,
-      "surveyed": 589,
-      "accepted": 530,
+      "surveyed": 590,
+      "accepted": 531,
       "remaining": 0
     },
     "prs": {
