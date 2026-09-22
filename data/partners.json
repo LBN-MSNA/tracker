@@ -3,8 +3,8 @@
   "organizations": [
     {
       "organization": "REACH",
-      "accepted": 2306,
-      "deleted": 213
+      "accepted": 2463,
+      "deleted": 217
     },
     {
       "organization": "IOM",
@@ -18,12 +18,12 @@
     },
     {
       "organization": "LOST",
-      "accepted": 909,
-      "deleted": 112
+      "accepted": 942,
+      "deleted": 113
     },
     {
       "organization": "NABAA",
-      "accepted": 2005,
+      "accepted": 2027,
       "deleted": 202
     }
   ]
