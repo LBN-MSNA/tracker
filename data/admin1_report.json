@@ -69,15 +69,15 @@
     "label": "Mount Lebanon",
     "all_population": {
       "target": 2265,
-      "surveyed": 2227,
-      "accepted": 2105,
-      "remaining": 160
+      "surveyed": 2237,
+      "accepted": 2113,
+      "remaining": 152
     },
     "lebanese": {
       "target": 1296,
-      "surveyed": 1315,
-      "accepted": 1198,
-      "remaining": 98
+      "surveyed": 1325,
+      "accepted": 1206,
+      "remaining": 90
     },
     "prl": {
       "target": 305,

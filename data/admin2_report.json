@@ -234,15 +234,15 @@
     "label": "Baabda",
     "all_population": {
       "target": 690,
-      "surveyed": 585,
-      "accepted": 553,
-      "remaining": 137
+      "surveyed": 595,
+      "accepted": 561,
+      "remaining": 129
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 169,
-      "accepted": 139,
-      "remaining": 77
+      "surveyed": 179,
+      "accepted": 147,
+      "remaining": 69
     },
     "prl": {
       "target": 210,
