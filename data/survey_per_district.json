@@ -3,13 +3,13 @@
     "admin2": "LB11",
     "district": "Beirut",
     "lebanese_target": 216,
-    "lebanese_surveyed": 309,
+    "lebanese_surveyed": 310,
     "lebanese_accepted": 210,
     "lebanese_remaining": 6,
     "migrant_target": 270,
-    "migrant_surveyed": 273,
-    "migrant_accepted": 272,
-    "migrant_remaining": -2
+    "migrant_surveyed": 275,
+    "migrant_accepted": 271,
+    "migrant_remaining": -1
   },
   {
     "admin2": "LB21",
@@ -51,9 +51,9 @@
     "admin2": "LB24",
     "district": "West Bekaa",
     "lebanese_target": 216,
-    "lebanese_surveyed": 44,
-    "lebanese_accepted": 44,
-    "lebanese_remaining": 172,
+    "lebanese_surveyed": 184,
+    "lebanese_accepted": 184,
+    "lebanese_remaining": 32,
     "migrant_target": 13,
     "migrant_surveyed": 13,
     "migrant_accepted": 13,
@@ -68,8 +68,8 @@
     "lebanese_remaining": 17,
     "migrant_target": 75,
     "migrant_surveyed": 76,
-    "migrant_accepted": 76,
-    "migrant_remaining": -1
+    "migrant_accepted": 75,
+    "migrant_remaining": 0
   },
   {
     "admin2": "LB31",
@@ -79,21 +79,21 @@
     "lebanese_accepted": 207,
     "lebanese_remaining": 9,
     "migrant_target": 145,
-    "migrant_surveyed": 146,
-    "migrant_accepted": 146,
-    "migrant_remaining": -1
+    "migrant_surveyed": 152,
+    "migrant_accepted": 151,
+    "migrant_remaining": -6
   },
   {
     "admin2": "LB32",
     "district": "Baabda",
     "lebanese_target": 216,
-    "lebanese_surveyed": 179,
-    "lebanese_accepted": 147,
-    "lebanese_remaining": 69,
+    "lebanese_surveyed": 242,
+    "lebanese_accepted": 201,
+    "lebanese_remaining": 15,
     "migrant_target": 74,
-    "migrant_surveyed": 74,
-    "migrant_accepted": 74,
-    "migrant_remaining": 0
+    "migrant_surveyed": 76,
+    "migrant_accepted": 76,
+    "migrant_remaining": -2
   },
   {
     "admin2": "LB33",
@@ -103,9 +103,9 @@
     "lebanese_accepted": 214,
     "lebanese_remaining": 2,
     "migrant_target": 10,
-    "migrant_surveyed": 10,
-    "migrant_accepted": 10,
-    "migrant_remaining": 0
+    "migrant_surveyed": 11,
+    "migrant_accepted": 11,
+    "migrant_remaining": -1
   },
   {
     "admin2": "LB34",
@@ -115,9 +115,9 @@
     "lebanese_accepted": 213,
     "lebanese_remaining": 3,
     "migrant_target": 40,
-    "migrant_surveyed": 40,
-    "migrant_accepted": 39,
-    "migrant_remaining": 1
+    "migrant_surveyed": 41,
+    "migrant_accepted": 40,
+    "migrant_remaining": 0
   },
   {
     "admin2": "LB35",
@@ -139,9 +139,9 @@
     "lebanese_accepted": 214,
     "lebanese_remaining": 2,
     "migrant_target": 185,
-    "migrant_surveyed": 183,
-    "migrant_accepted": 183,
-    "migrant_remaining": 2
+    "migrant_surveyed": 188,
+    "migrant_accepted": 188,
+    "migrant_remaining": -3
   },
   {
     "admin2": "LB41",
@@ -283,9 +283,9 @@
     "lebanese_accepted": 216,
     "lebanese_remaining": 0,
     "migrant_target": 85,
-    "migrant_surveyed": 85,
-    "migrant_accepted": 82,
-    "migrant_remaining": 3
+    "migrant_surveyed": 90,
+    "migrant_accepted": 87,
+    "migrant_remaining": -2
   },
   {
     "admin2": "LB62",
@@ -307,8 +307,8 @@
     "lebanese_accepted": 216,
     "lebanese_remaining": 0,
     "migrant_target": 111,
-    "migrant_surveyed": 111,
-    "migrant_accepted": 111,
-    "migrant_remaining": 0
+    "migrant_surveyed": 113,
+    "migrant_accepted": 113,
+    "migrant_remaining": -2
   }
 ]

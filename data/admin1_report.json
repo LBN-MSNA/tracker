@@ -3,13 +3,13 @@
     "label": "Beirut",
     "all_population": {
       "target": 627,
-      "surveyed": 718,
-      "accepted": 604,
-      "remaining": 23
+      "surveyed": 721,
+      "accepted": 603,
+      "remaining": 24
     },
     "lebanese": {
       "target": 216,
-      "surveyed": 309,
+      "surveyed": 310,
       "accepted": 210,
       "remaining": 6
     },
@@ -27,8 +27,8 @@
     },
     "migrant": {
       "target": 270,
-      "surveyed": 273,
-      "accepted": 272,
+      "surveyed": 275,
+      "accepted": 271,
       "remaining": 0
     }
   },
@@ -36,15 +36,15 @@
     "label": "Bekaa",
     "all_population": {
       "target": 735,
-      "surveyed": 601,
-      "accepted": 547,
-      "remaining": 188
+      "surveyed": 741,
+      "accepted": 686,
+      "remaining": 49
     },
     "lebanese": {
       "target": 647,
-      "surveyed": 512,
-      "accepted": 458,
-      "remaining": 189
+      "surveyed": 652,
+      "accepted": 598,
+      "remaining": 49
     },
     "prl": {
       "target": 0,
@@ -61,7 +61,7 @@
     "migrant": {
       "target": 88,
       "surveyed": 89,
-      "accepted": 89,
+      "accepted": 88,
       "remaining": 0
     }
   },
@@ -69,15 +69,15 @@
     "label": "Mount Lebanon",
     "all_population": {
       "target": 2265,
-      "surveyed": 2237,
-      "accepted": 2113,
-      "remaining": 152
+      "surveyed": 2315,
+      "accepted": 2181,
+      "remaining": 84
     },
     "lebanese": {
       "target": 1296,
-      "surveyed": 1325,
-      "accepted": 1206,
-      "remaining": 90
+      "surveyed": 1388,
+      "accepted": 1260,
+      "remaining": 36
     },
     "prl": {
       "target": 305,
@@ -93,9 +93,9 @@
     },
     "migrant": {
       "target": 474,
-      "surveyed": 473,
-      "accepted": 472,
-      "remaining": 2
+      "surveyed": 488,
+      "accepted": 486,
+      "remaining": 0
     }
   },
   "LB4": {
@@ -168,9 +168,9 @@
     "label": "South",
     "all_population": {
       "target": 1815,
-      "surveyed": 1854,
-      "accepted": 1748,
-      "remaining": 67
+      "surveyed": 1861,
+      "accepted": 1755,
+      "remaining": 60
     },
     "lebanese": {
       "target": 647,
@@ -192,9 +192,9 @@
     },
     "migrant": {
       "target": 201,
-      "surveyed": 201,
-      "accepted": 198,
-      "remaining": 3
+      "surveyed": 208,
+      "accepted": 205,
+      "remaining": 0
     }
   },
   "LB7": {
